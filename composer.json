@@ -10,7 +10,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "php-decimal/php-decimal": "^1.1"
+        "php-decimal/php-decimal": "^1.1",
+        "prettus/l5-repository": "^2.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

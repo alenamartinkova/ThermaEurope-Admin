@@ -30,6 +30,7 @@ RUN docker-php-ext-enable decimal
 COPY ./docker/app/app.ini $PHP_INI_DIR/conf.d/
 COPY ./docker/php/conf.d/error_reporting.ini $PHP_INI_DIR/conf.d/error_reporting.ini
 
+
 CMD ["/bin/sh", "-c", "php-fpm"]
 
 ########################################################################################################################
