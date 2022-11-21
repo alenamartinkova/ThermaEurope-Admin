@@ -21,3 +21,18 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+### OSX ###
+.DS_Store
+
+### Netbeans ###
+nbproject
+
+### PhpStorm ###
+.idea
+
+### Sublime Text ###
+*.sublime-*
+
+### Sass ###
+*.sass-cache
