@@ -1,3 +1,6 @@
+ide-helper:
+	composer run ide-helper
+
 type-check:
 	tsc --noEmit
 
@@ -8,4 +11,5 @@ pint-fix:
 	./vendor/bin/pint
 
 test:
-    composer dump-autoload && php artisan test
+	composer dump-autoload
+	php artisan test
