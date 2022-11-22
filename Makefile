@@ -1,3 +1,6 @@
+type-check:
+	tsc --noEmit
+
 pint:
 	./vendor/bin/pint --test
 
