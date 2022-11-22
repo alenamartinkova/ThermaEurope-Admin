@@ -1,8 +1,15 @@
 ide-helper:
 	composer run ide-helper
 
-type-check:
+eslint:
+	npx eslint resources/js/*
+
+eslint-fix:
+	npx eslint resources/js/* --fix
+
+code-check:
 	tsc --noEmit
+	make eslint
 
 pint:
 	./vendor/bin/pint --test
