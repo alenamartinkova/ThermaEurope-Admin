@@ -1,3 +1,6 @@
+vite:
+	npm run dev -- --host 0.0.0.0 --port 5173
+
 ide-helper:
 	composer run ide-helper
 
@@ -8,7 +11,8 @@ eslint-fix:
 	npx eslint resources/js/* --fix
 
 code-check:
-	tsc --noEmit
+	make pint
+	npx tsc --noEmit
 	make eslint
 
 pint:

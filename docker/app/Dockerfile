@@ -39,6 +39,11 @@ FROM base as localhost
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Install npm
+RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash && \
+    apt-get install -y nodejs && \
+    curl -qL https://www.npmjs.com/install.sh | sh
+
 # Xdebug
 #COPY ./docker/php/conf.d/xdebug.ini $PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini
 
