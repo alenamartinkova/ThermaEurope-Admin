@@ -21,15 +21,6 @@ jobs:
   lint-test-build-deploy:
     name: Lint, Test, Build, Deploy
     runs-on: ubuntu-latest
-#    services:
-#      mysql:
-#        image: mysql:5.6
-#        env:
-#          MYSQL_ROOT_PASSWORD: root
-#          MYSQL_DATABASE: spanamo_test
-#        ports:
-#          - 3306:3306
-#        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: Checkout
@@ -74,51 +65,46 @@ jobs:
            DB_USERNAME: root
            DB_PASSWORD: root
 
-#      - name: Build
-#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
-#        run: |-
-#          docker build -f ./docker/app/Dockerfile --target production --compress --tag "$IMAGE" .
-#
-#      - uses: google-github-actions/auth@v0
-#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
-#        with:
-#          credentials_json: ${{ secrets.GCP_SA_KEY }}
-#
-#      - uses: google-github-actions/setup-gcloud@v0
-#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
-#        with:
-#          project_id: ${{ secrets.GKE_PROJECT_ID }}
-#
-#      - name: Configure Docker
-#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
-#        run: |-
-#          gcloud --quiet auth configure-docker
-#
-#      - name: Publish
-#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
-#        run: |-
-#          docker push "$IMAGE"
-#
-#      - uses: google-github-actions/get-gke-credentials@v0
-#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
-#        with:
-#          cluster_name: spanamo
-#          location: europe-west3-b
-#
-#      - name: Set up Kustomize
-#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
-#        run: |-
-#          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/main/hack/install_kustomize.sh" | bash
-#
+      - name: Build
+        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
+        run: |-
+          docker build -f ./docker/app/Dockerfile --target production --compress --tag "$IMAGE" .
+
+      - uses: google-github-actions/auth@v0
+        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - uses: google-github-actions/setup-gcloud@v0
+        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
+        with:
+          project_id: ${{ secrets.GKE_PROJECT_ID }}
+
+      - name: Configure Docker
+        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
+        run: |-
+          gcloud --quiet auth configure-docker
+
+      - name: Publish
+        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
+        run: |-
+          docker push "$IMAGE"
+
+      - uses: google-github-actions/get-gke-credentials@v0
+        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
+        with:
+          cluster_name: spanamo
+          location: europe-west3-b
+
+      - name: Set up Kustomize
+        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
+        run: |-
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/main/hack/install_kustomize.sh" | bash
+
 #      - name: Deploy Dev
 #        if: github.ref == 'refs/heads/devel'
 #        run: |-
 #          echo "$DOTENV_DEVEL" > .env
-#
-#          sed -i "s/sql_host = mysql/sql_host = cloud-sql-proxy.default.svc.cluster.local/" ./docker/sphinx/sphinx.conf
-#          sed -i "s/sql_user = root/sql_user = spanamo-devel/" ./docker/sphinx/sphinx.conf
-#          sed -i "s/sql_pass = root/sql_pass = $MYSQL_DEVEL_PASSWORD/" ./docker/sphinx/sphinx.conf
-#          sed -i "s/sql_db = spanamo/sql_db = spanamo_devel/" ./docker/sphinx/sphinx.conf
 #
 #          (cd kubernetes/overlays/devel; kustomize edit set image docker-laravel-phpfpm=$IMAGE)
 #          kustomize build --load-restrictor LoadRestrictionsNone kubernetes/overlays/devel | kubectl apply -f -
@@ -130,11 +116,6 @@ jobs:
 #        if: github.ref == 'refs/heads/main'
 #        run: |-
 #          echo "$DOTENV_PROD" > .env
-#
-#          sed -i "s/sql_host = mysql/sql_host = cloud-sql-proxy.default.svc.cluster.local/" ./docker/sphinx/sphinx.conf
-#          sed -i "s/sql_user = root/sql_user = spanamo-prod/" ./docker/sphinx/sphinx.conf
-#          sed -i "s/sql_pass = root/sql_pass = $MYSQL_PROD_PASSWORD/" ./docker/sphinx/sphinx.conf
-#          sed -i "s/sql_db = spanamo/sql_db = spanamo_prod/" ./docker/sphinx/sphinx.conf
 #
 #          (cd kubernetes/overlays/production; kustomize edit set image docker-laravel-phpfpm=$IMAGE)
 #          kustomize build --load-restrictor LoadRestrictionsNone kubernetes/overlays/production | kubectl apply -f -
