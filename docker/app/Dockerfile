@@ -61,9 +61,6 @@ COPY ./docker/app/opcache.ini $PHP_INI_DIR/conf.d/
 # Copy existing application directory permissions
 COPY --chown=www-data:www-data . /var/www/thermaeurope
 
-RUN chgrp -R www-data storage bootstrap/cache && \
-    chmod -R g+w storage bootstrap/cache
-
 # Installing Composer
 RUN composer install --optimize-autoloader --no-interaction --no-progress
 
