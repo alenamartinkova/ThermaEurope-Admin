@@ -1,5 +1,5 @@
 vite:
-	npm run dev -- --host 0.0.0.0 --port 5173
+	npm run dev
 
 ide-helper:
 	composer run ide-helper

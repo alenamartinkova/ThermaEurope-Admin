@@ -1,0 +1,140 @@
+name: Lint, Test, Build, Deploy
+
+on:
+  push:
+    branches:
+      - master
+      - devel
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+env:
+  IMAGE: ${{ format('gcr.io/{0}/{1}:{2}', secrets.GKE_PROJECT_ID, 'thermaeurope-admin', github.sha) }}
+  DOTENV_DEVEL: ${{ secrets.DOTENV_DEVEL }}
+  DOTENV_PROD: ${{ secrets.DOTENV_PROD }}
+  MYSQL_DEVEL_PASSWORD: ${{ secrets.MYSQL_DEVEL_PASSWORD }}
+  MYSQL_PROD_PASSWORD: ${{ secrets.MYSQL_PROD_PASSWORD }}
+
+jobs:
+  lint-test-build-deploy:
+    name: Lint, Test, Build, Deploy
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.6
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: spanamo_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: npm install
+        run: npm install
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer:v2
+          extensions: decimal
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Run composer install
+        run: composer install --ignore-platform-reqs --no-ansi --no-interaction --no-scripts
+
+      - name: Lint
+        run: make code-check
+
+      - name: PHPUnit
+        timeout-minutes: 5
+        run: vendor/bin/phpunit -d memory_limit=256M --verbose
+        env:
+           APP_KEY: base64:Fp8IkUU/CdaUB4VvZQ/nDKKM+7+RMQMumGKuLKj1qJw=
+           DB_USERNAME: root
+           DB_PASSWORD: root
+
+#      - name: Build
+#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/master'
+#        run: |-
+#          docker build -f ./docker/app/Dockerfile --target production --compress --tag "$IMAGE" .
+#
+#      - uses: google-github-actions/auth@v0
+#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/master'
+#        with:
+#          credentials_json: ${{ secrets.GCP_SA_KEY }}
+#
+#      - uses: google-github-actions/setup-gcloud@v0
+#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/master'
+#        with:
+#          project_id: ${{ secrets.GKE_PROJECT_ID }}
+#
+#      - name: Configure Docker
+#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/master'
+#        run: |-
+#          gcloud --quiet auth configure-docker
+#
+#      - name: Publish
+#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/master'
+#        run: |-
+#          docker push "$IMAGE"
+#
+#      - uses: google-github-actions/get-gke-credentials@v0
+#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/master'
+#        with:
+#          cluster_name: spanamo
+#          location: europe-west3-b
+#
+#      - name: Set up Kustomize
+#        if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/master'
+#        run: |-
+#          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+#
+#      - name: Deploy Dev
+#        if: github.ref == 'refs/heads/devel'
+#        run: |-
+#          echo "$DOTENV_DEVEL" > .env
+#
+#          sed -i "s/sql_host = mysql/sql_host = cloud-sql-proxy.default.svc.cluster.local/" ./docker/sphinx/sphinx.conf
+#          sed -i "s/sql_user = root/sql_user = spanamo-devel/" ./docker/sphinx/sphinx.conf
+#          sed -i "s/sql_pass = root/sql_pass = $MYSQL_DEVEL_PASSWORD/" ./docker/sphinx/sphinx.conf
+#          sed -i "s/sql_db = spanamo/sql_db = spanamo_devel/" ./docker/sphinx/sphinx.conf
+#
+#          (cd kubernetes/overlays/devel; kustomize edit set image docker-laravel-phpfpm=$IMAGE)
+#          kustomize build --load-restrictor LoadRestrictionsNone kubernetes/overlays/devel | kubectl apply -f -
+#          kubectl patch service spanamo-webserver-php-fpm -n devel -p '{"spec":{"selector":{"app": "spanamo-maintenance"}}}'
+#          kubectl rollout status deployments/spanamo-webserver-php-fpm -n devel
+#          kubectl patch service spanamo-webserver-php-fpm -n devel -p '{"spec":{"selector":{"app": "spanamo-webserver-php-fpm"}}}'
+#
+#      - name: Deploy Prod
+#        if: github.ref == 'refs/heads/master'
+#        run: |-
+#          echo "$DOTENV_PROD" > .env
+#
+#          sed -i "s/sql_host = mysql/sql_host = cloud-sql-proxy.default.svc.cluster.local/" ./docker/sphinx/sphinx.conf
+#          sed -i "s/sql_user = root/sql_user = spanamo-prod/" ./docker/sphinx/sphinx.conf
+#          sed -i "s/sql_pass = root/sql_pass = $MYSQL_PROD_PASSWORD/" ./docker/sphinx/sphinx.conf
+#          sed -i "s/sql_db = spanamo/sql_db = spanamo_prod/" ./docker/sphinx/sphinx.conf
+#
+#          (cd kubernetes/overlays/production; kustomize edit set image docker-laravel-phpfpm=$IMAGE)
+#          kustomize build --load-restrictor LoadRestrictionsNone kubernetes/overlays/production | kubectl apply -f -
+#          kubectl patch service spanamo-webserver-php-fpm -n production -p '{"spec":{"selector":{"app": "spanamo-maintenance"}}}'
+#          kubectl rollout status deployments/spanamo-webserver-php-fpm -n production
+#          kubectl patch service spanamo-webserver-php-fpm -n production -p '{"spec":{"selector":{"app": "spanamo-webserver-php-fpm"}}}'
