@@ -99,7 +99,7 @@ jobs:
       - name: Set up Kustomize
         if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
         run: |-
-          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/main/hack/install_kustomize.sh" | bash
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
 
 #      - name: Deploy Dev
 #        if: github.ref == 'refs/heads/devel'
