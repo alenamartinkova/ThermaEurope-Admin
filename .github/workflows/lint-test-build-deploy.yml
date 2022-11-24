@@ -68,7 +68,7 @@ jobs:
       - name: Build
         if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
         run: |-
-          docker build -f ./docker/app/Dockerfile --target=production --compress --tag "$IMAGE" .
+          docker buildx build -f ./docker/app/Dockerfile --target production --compress --tag "$IMAGE" .
 
       - uses: google-github-actions/auth@v0
         if: github.ref == 'refs/heads/devel' || github.ref == 'refs/heads/main'
