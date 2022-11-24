@@ -30,7 +30,7 @@ jobs:
         run: npm install
 
       - name: npm build
-        run: npm run build
+        run: npm run build && ls public/build
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2

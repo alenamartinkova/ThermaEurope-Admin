@@ -53,15 +53,13 @@ RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash && \
 ########################################################################################################################
 FROM base as production
 
+# Install OPCache
 RUN docker-php-ext-configure opcache --enable-opcache \
     && docker-php-ext-install opcache
 
 COPY ./docker/app/opcache.ini $PHP_INI_DIR/conf.d/
 
 # Copy existing application directory permissions
-COPY --chown=www-data:www-data . /var/www/thermaeurope
-
-# Installing Composer
-RUN composer install --optimize-autoloader --no-interaction --no-progress
+COPY --chown=www-data:www-data . /var/www/thermaeurope-admin
 
 ########################################################################################################################
