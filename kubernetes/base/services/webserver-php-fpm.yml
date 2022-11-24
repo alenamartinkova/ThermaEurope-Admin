@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: spanamo-admin-webserver-php-fpm
+spec:
+  selector:
+    app: spanamo-admin-webserver-php-fpm
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

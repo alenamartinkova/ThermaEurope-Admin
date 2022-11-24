@@ -1,0 +1,12 @@
+resources:
+  - ./deployments/storage-app-pv-claim.yml
+  - ./deployments/webserver-php-fpm.yml
+  - ./services/webserver-php-fpm.yml
+  - ./ingress.yml
+configMapGenerator:
+  - name: spanamo-admin-dotenv
+    files:
+      - ../../.env
+  - name: spanamo-admin-nginx-config
+    files:
+      - ../../docker/nginx/nginx.conf

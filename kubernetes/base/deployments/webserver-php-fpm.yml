@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spanamo-admin-webserver-php-fpm
+  labels:
+    app: spanamo-admin-webserver-php-fpm
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: spanamo-admin-webserver-php-fpm
+  template:
+    metadata:
+      labels:
+        app: spanamo-admin-webserver-php-fpm
+    spec:
+      hostAliases:
+        - ip: "127.0.0.1"
+          hostnames:
+            - app-admin
+      securityContext:
+        fsGroup: 33
+      volumes:
+        - name: source-codes
+          emptyDir: {}
+        - name: dotenv
+          configMap:
+            name: spanamo-admin-dotenv
+        - name: storage-app
+          persistentVolumeClaim:
+            claimName: spanamo-admin-storage-app-pv-claim
+        - name: nginx-config
+          configMap:
+            name: spanamo-admin-nginx-config
+            items:
+              - key: nginx.conf
+                path: default.conf.template
+      initContainers:
+        - name: copy-source-codes-to-volume
+          image: "docker-laravel-phpfpm"
+          securityContext:
+            runAsUser: 33
+          command:
+            [
+              "sh",
+              "-c",
+              "cp -r /var/www/thermaeurope-admin/. /tmp/source-codes",
+            ]
+          volumeMounts:
+            - name: source-codes
+              mountPath: /tmp/source-codes
+      containers:
+        - image: "docker-laravel-phpfpm"
+          name: spanamo-admin-php-fpm
+          securityContext:
+            runAsUser: 33
+          resources:
+            requests:
+              memory: 256Mi
+          workingDir: /var/www/thermaeurope-admin
+          volumeMounts:
+            - name: source-codes
+              mountPath: /var/www/thermaeurope-admin
+            - name: dotenv
+              mountPath: /var/www/thermaeurope-admin/.env
+              subPath: .env
+            - name: storage-app
+              mountPath: /var/www/thermaeurope-admin/storage/app
+              subPath: app
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  [
+                    "sh",
+                    "-c",
+                    "mkdir /var/www/thermaeurope-admin/public/storage && ln -s /var/www/thermaeurope-admin/storage/app /var/www/thermaeurope-admin/public/storage/app && php artisan config:cache && php artisan view:cache",
+                  ]
+        - image: nginx:1.21.6-alpine
+          name: webserver
+          resources:
+            requests:
+              memory: 64Mi
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/templates
+            - name: source-codes
+              mountPath: /var/www/thermaeurope-admin
+            - name: storage-app
+              mountPath: /var/www/thermaeurope-admin/storage/app
+              subPath: app
+          env:
+            - name: NGINX_HOST
+              value: localhost
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - nginx -s quit
+      imagePullSecrets:
+        - name: gitlab-registry-secret-2

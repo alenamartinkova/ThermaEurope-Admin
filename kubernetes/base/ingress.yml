@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spanamo-admin-ingress
+spec:
+  rules:
+    - host: ~
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              name: spanamo-admin-webserver-php-fpm
+              port:
+                number: 80

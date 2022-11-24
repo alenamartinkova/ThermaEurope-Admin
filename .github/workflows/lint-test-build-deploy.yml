@@ -101,17 +101,17 @@ jobs:
         run: |-
           curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
 
-#      - name: Deploy Dev
-#        if: github.ref == 'refs/heads/devel'
-#        run: |-
-#          echo "$DOTENV_DEVEL" > .env
-#
-#          (cd kubernetes/overlays/devel; kustomize edit set image docker-laravel-phpfpm=$IMAGE)
-#          kustomize build --load-restrictor LoadRestrictionsNone kubernetes/overlays/devel | kubectl apply -f -
-#          kubectl patch service spanamo-webserver-php-fpm -n devel -p '{"spec":{"selector":{"app": "spanamo-maintenance"}}}'
-#          kubectl rollout status deployments/spanamo-webserver-php-fpm -n devel
-#          kubectl patch service spanamo-webserver-php-fpm -n devel -p '{"spec":{"selector":{"app": "spanamo-webserver-php-fpm"}}}'
-#
+      - name: Deploy Dev
+        if: github.ref == 'refs/heads/devel'
+        run: |-
+          echo "$DOTENV_DEVEL" > .env
+
+          (cd kubernetes/overlays/devel; kustomize edit set image docker-laravel-phpfpm=$IMAGE)
+          kustomize build --load-restrictor LoadRestrictionsNone kubernetes/overlays/devel | kubectl apply -f -
+          kubectl patch service spanamo-admin-webserver-php-fpm -n devel -p '{"spec":{"selector":{"app": "spanamo-maintenance"}}}'
+          kubectl rollout status deployments/spanamo-admin-webserver-php-fpm -n devel
+          kubectl patch service spanamo-admin-webserver-php-fpm -n devel -p '{"spec":{"selector":{"app": "spanamo-admin-webserver-php-fpm"}}}'
+
 #      - name: Deploy Prod
 #        if: github.ref == 'refs/heads/main'
 #        run: |-

@@ -1,0 +1,7 @@
+bases:
+  - ../../base
+resources:
+  - ./namespace.yml
+namespace: devel
+patchesStrategicMerge:
+  - ./patches/ingress.yml
