@@ -112,13 +112,13 @@ jobs:
           kubectl rollout status deployments/spanamo-admin-webserver-php-fpm -n devel
           kubectl patch service spanamo-admin-webserver-php-fpm -n devel -p '{"spec":{"selector":{"app": "spanamo-admin-webserver-php-fpm"}}}'
 
-#      - name: Deploy Prod
-#        if: github.ref == 'refs/heads/main'
-#        run: |-
-#          echo "$DOTENV_PROD" > .env
-#
-#          (cd kubernetes/overlays/production; kustomize edit set image docker-laravel-phpfpm=$IMAGE)
-#          kustomize build --load-restrictor LoadRestrictionsNone kubernetes/overlays/production | kubectl apply -f -
-#          kubectl patch service spanamo-webserver-php-fpm -n production -p '{"spec":{"selector":{"app": "spanamo-maintenance"}}}'
-#          kubectl rollout status deployments/spanamo-webserver-php-fpm -n production
-#          kubectl patch service spanamo-webserver-php-fpm -n production -p '{"spec":{"selector":{"app": "spanamo-webserver-php-fpm"}}}'
+      - name: Deploy Prod
+        if: github.ref == 'refs/heads/main'
+        run: |-
+          echo "$DOTENV_PROD" > .env
+
+          (cd kubernetes/overlays/production; kustomize edit set image docker-laravel-phpfpm=$IMAGE)
+          kustomize build --load-restrictor LoadRestrictionsNone kubernetes/overlays/production | kubectl apply -f -
+          kubectl patch service spanamo-admin-webserver-php-fpm -n production -p '{"spec":{"selector":{"app": "spanamo-maintenance"}}}'
+          kubectl rollout status deployments/spanamo-admin-webserver-php-fpm -n production
+          kubectl patch service spanamo-admin-webserver-php-fpm -n production -p '{"spec":{"selector":{"app": "spanamo-admin-webserver-php-fpm"}}}'
