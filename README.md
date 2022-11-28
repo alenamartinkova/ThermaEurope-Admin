@@ -23,3 +23,8 @@
 
 ## Tests
 - Run `make test` within `thermaeurope_app-admin` docker container.
+
+## Xdebug
+- Xdebug is already installed in local docker container.
+- You just need to configure your IDE to listen.
+- Complete manual how to configure PHPStorm is here: https://www.youtube.com/watch?v=4opFac50Vwo

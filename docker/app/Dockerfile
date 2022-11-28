@@ -45,10 +45,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash && \
     curl -qL https://www.npmjs.com/install.sh | sh
 
 # Xdebug
-#COPY ./docker/php/conf.d/xdebug.ini $PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini
+COPY ./docker/php/conf.d/xdebug.ini $PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini
 
-#RUN pecl install xdebug
-#RUN docker-php-ext-enable xdebug
+RUN pecl install xdebug
 
 ########################################################################################################################
 FROM base as production
