@@ -24,6 +24,12 @@
 ## Tests
 - Run `make test` within `thermaeurope_app-admin` docker container.
 
+## Generate migrations for tests
+- All DB migrations are stored in https://github.com/Moravio/ThermaEurope.
+- We need the DB structure for tests.
+- Run `make generate-migrations` to generate migrations from your local database.
+- This migrations will be used for tests
+
 ## Xdebug
 - Xdebug is already installed in local docker container.
 - You just need to configure your IDE to listen.
