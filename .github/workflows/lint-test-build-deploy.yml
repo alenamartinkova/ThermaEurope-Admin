@@ -27,16 +27,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: cypress-io/github-action@v4
-        with:
-          # we have already installed all dependencies above
-          install: false
-          browser: chrome
-          record: false
-          parallel: false
-#            spec: cypress/tests/ui/*
-          config: baseUrl=https://admin.spanamo.online
-
       - uses: actions/setup-node@v3
         with:
           node-version: latest
@@ -44,6 +34,14 @@ jobs:
 
       - name: npm install
         run: npm ci
+
+      - uses: cypress-io/github-action@v4
+        with:
+          install: false
+          browser: chrome
+          record: false
+          parallel: false
+          config: baseUrl=https://admin.spanamo.online
 
       - name: npm build
         run: npm run build
