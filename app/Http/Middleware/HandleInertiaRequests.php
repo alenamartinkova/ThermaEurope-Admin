@@ -21,7 +21,7 @@ class HandleInertiaRequests extends Middleware
      *
      * @see https://inertiajs.com/asset-versioning
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return string|null
      */
     public function version(Request $request): ?string
@@ -34,8 +34,9 @@ class HandleInertiaRequests extends Middleware
      *
      * @see https://inertiajs.com/shared-data
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @param  Request  $request
+     * @return array<mixed>
+     * @noinspection PhpPluralMixedCanBeReplacedWithArrayInspection
      */
     public function share(Request $request): array
     {
