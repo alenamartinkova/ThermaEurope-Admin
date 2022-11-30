@@ -15,7 +15,7 @@
 - This step is essential to run FE correctly.
 
 ## Code Check
-- Run `make code-check` within `thermaeurope_app-admin` docker container.
+- Run `make check` within `thermaeurope_app-admin` docker container.
 - It runs all code checks (PHP, JS).
 - According to errors you get you can run this commands to auto-fix some of them.
   - `make eslint-fix`

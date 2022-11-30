@@ -10,16 +10,24 @@ eslint:
 eslint-fix:
 	npx eslint resources/js/* --fix
 
-code-check:
+missing-translations:
+	php artisan translation:missing --lang=en
+
+check:
 	make pint
+	make phpstan
 	npx tsc --noEmit
 	make eslint
+	make missing-translations | grep 'No missing translation' || echo 'Some translations are missing. Run `make missing-translations` and add them.' >&2 | exit 1
 
 pint:
 	./vendor/bin/pint --test
 
 pint-fix:
 	./vendor/bin/pint
+
+phpstan:
+	./vendor/bin/phpstan analyse
 
 test:
 	composer dump-autoload

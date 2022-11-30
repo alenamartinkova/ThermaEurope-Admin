@@ -60,7 +60,7 @@ jobs:
         run: composer install --ignore-platform-reqs --no-ansi --no-interaction --no-scripts
 
       - name: Lint
-        run: make code-check
+        run: make check
 
       - name: PHPUnit
         timeout-minutes: 5

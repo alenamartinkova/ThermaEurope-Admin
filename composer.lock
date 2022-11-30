@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e00ea4325e6761498fab3b23159a6690",
+    "content-hash": "6b55164c1137bea7ed92e2f864f499b9",
     "packages": [
         {
             "name": "brick/math",
@@ -896,6 +896,60 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+        },
+        {
+            "name": "hexadog/laravel-translation-manager",
+            "version": "v0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hexadog/laravel-translation-manager.git",
+                "reference": "0ac18be235e9d4637a06d4458d0e8b09f97ab244"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hexadog/laravel-translation-manager/zipball/0ac18be235e9d4637a06d4458d0e8b09f97ab244",
+                "reference": "0ac18be235e9d4637a06d4458d0e8b09f97ab244",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "symfony/finder": "^5.1|^6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.1",
+                "orchestra/testbench": "~5.2|^7.1",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hexadog\\TranslationManager\\Providers\\PackageServiceProvider"
+                    ],
+                    "dont-discover": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hexadog\\TranslationManager\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gaetan",
+                    "email": "gaetan@hexadog.com"
+                }
+            ],
+            "description": "Laravel Translation management package",
+            "support": {
+                "issues": "https://github.com/hexadog/laravel-translation-manager/issues",
+                "source": "https://github.com/hexadog/laravel-translation-manager"
+            },
+            "time": "2022-08-09T12:09:47+00:00"
         },
         {
             "name": "inertiajs/inertia-laravel",
