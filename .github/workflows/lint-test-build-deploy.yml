@@ -34,7 +34,7 @@ jobs:
           record: false
           parallel: false
 #            spec: cypress/tests/ui/*
-          config: baseUrl=http://localhost:3000
+          config: baseUrl=https://admin.spanamo.online
 
       - uses: actions/setup-node@v3
         with:
