@@ -13,6 +13,9 @@ eslint-fix:
 missing-translations:
 	php artisan translation:missing --lang=en
 
+unused-translations:
+	php artisan translation:unused --lang=en
+
 check:
 	make pint
 	make phpstan
