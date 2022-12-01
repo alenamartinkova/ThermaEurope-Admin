@@ -41,7 +41,8 @@ jobs:
           browser: chrome
           record: false
           parallel: false
-          config: baseUrl=https://moravio:rl%23yEzsC%5Bc@admin.spanamo.online
+          config: baseUrl=https://admin.spanamo.online
+          env: username=moravio,password=rl#yEzsC[c
 
       - name: npm build
         run: npm run build
