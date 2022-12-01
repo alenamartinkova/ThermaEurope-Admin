@@ -37,6 +37,18 @@ jobs:
       - name: npm build
         run: npm run build
 
+      - uses: cypress-io/github-action@v4
+        if: github.ref == 'refs/heads/devel'
+        with:
+          install: false
+          browser: chrome
+          record: false
+          parallel: false
+          config: baseUrl=https://admin.spanamo.online
+        env:
+          CYPRESS_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+          CYPRESS_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -127,15 +139,3 @@ jobs:
           kubectl patch service spanamo-admin-webserver-php-fpm -n production -p '{"spec":{"selector":{"app": "spanamo-maintenance"}}}'
           kubectl rollout status deployments/spanamo-admin-webserver-php-fpm -n production
           kubectl patch service spanamo-admin-webserver-php-fpm -n production -p '{"spec":{"selector":{"app": "spanamo-admin-webserver-php-fpm"}}}'
-
-      - uses: cypress-io/github-action@v4
-        if: github.ref == 'refs/heads/devel'
-        with:
-          install: false
-          browser: chrome
-          record: false
-          parallel: false
-          config: baseUrl=https://admin.spanamo.online
-        env:
-          CYPRESS_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
-          CYPRESS_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
