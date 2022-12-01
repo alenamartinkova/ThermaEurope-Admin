@@ -16,8 +16,6 @@ env:
   DOTENV_PROD: ${{ secrets.DOTENV_PROD }}
   MYSQL_DEVEL_PASSWORD: ${{ secrets.MYSQL_DEVEL_PASSWORD }}
   MYSQL_PROD_PASSWORD: ${{ secrets.MYSQL_PROD_PASSWORD }}
-  BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
-  BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
 
 jobs:
   lint-test-build-deploy:
@@ -139,5 +137,5 @@ jobs:
           parallel: false
           config: baseUrl=https://admin.spanamo.online
         env:
-          CYPRESS_USERNAME: $BASIC_AUTH_USERNAME
-          CYPRESS_PASSWORD: $BASIC_AUTH_PASSWORD
+          CYPRESS_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+          CYPRESS_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
