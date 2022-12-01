@@ -37,7 +37,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->useCurrent();
 
-            $table->index(['advantagesable_id', DB::raw("advantagesable_type(191)")]);
+            $table->index(['advantagesable_id', DB::raw('advantagesable_type(191)')]);
         });
 
         Schema::create('allotment_detail', function (Blueprint $table) {
@@ -229,7 +229,7 @@ return new class extends Migration
             $table->integer('dt_id');
             $table->integer('quantity');
 
-            $table->index([DB::raw("room_id(255)")]);
+            $table->index([DB::raw('room_id(255)')]);
         });
 
         Schema::create('booking_vat_tax', function (Blueprint $table) {
@@ -1069,7 +1069,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->useCurrent();
 
-            $table->index(['urlable_id', DB::raw("urlable_type(191)")]);
+            $table->index(['urlable_id', DB::raw('urlable_type(191)')]);
         });
 
         Schema::create('page_urls_redirects', function (Blueprint $table) {
@@ -1387,7 +1387,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->useCurrent();
 
-            $table->index(['searchable_id', DB::raw("searchable_type(191)")]);
+            $table->index(['searchable_id', DB::raw('searchable_type(191)')]);
         });
 
         Schema::create('selected_package_options', function (Blueprint $table) {
