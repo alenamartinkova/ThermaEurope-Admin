@@ -43,8 +43,8 @@ jobs:
           parallel: false
           config: baseUrl=https://admin.spanamo.online
           env:
-            CYPRESS_username=moravio
-            CYPRESS_password=rl#yEzsC[c
+            cypress_username=moravio
+            cypress_password=rl#yEzsC[c
 
       - name: npm build
         run: npm run build
