@@ -41,7 +41,7 @@ jobs:
           browser: chrome
           record: false
           parallel: false
-          config: baseUrl=https://moravio:rl#yEzsC[c@admin.spanamo.online
+          config: baseUrl=https://moravio:rl%23yEzsC%5Bc@admin.spanamo.online
 
       - name: npm build
         run: npm run build
