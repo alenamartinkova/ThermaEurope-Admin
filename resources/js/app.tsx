@@ -4,6 +4,7 @@ import '../css/app.scss'
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { InertiaProgress } from '@inertiajs/progress'
 
 createInertiaApp({
   resolve: async (name) => {
@@ -12,5 +13,6 @@ createInertiaApp({
   setup ({ el, App, props }) {
     const root = createRoot(el)
     root.render(React.createElement(App, props))
+    InertiaProgress.init()
   }
 }).catch(() => {})
