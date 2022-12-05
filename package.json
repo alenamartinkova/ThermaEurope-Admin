@@ -31,6 +31,7 @@
         "@types/react": "^18.0.25",
         "@vitejs/plugin-react": "^2.2.0",
         "lang.js": "^1.1.14",
+        "laravel-react-i18n": "^1.0.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "vite-plugin-checker": "^0.5.1",
