@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Inertia } from '@inertiajs/inertia'
 import { usePage } from '@inertiajs/inertia-react'
+import route from 'ziggy-js'
 
 export default function Login (): JSX.Element {
   const { errors } = usePage().props
@@ -20,7 +21,7 @@ export default function Login (): JSX.Element {
 
   function handleSubmit (e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault()
-    Inertia.post('/login', values)
+    Inertia.post(route('login'), values)
   }
 
   return (
