@@ -11,6 +11,7 @@ import { PageProps } from '@inertiajs/inertia'
 
 interface SharedProps extends PageProps {
   locale: string
+  fallbackLang: string
   translations: {
     [key: string]: LanguageJsonFileInterface
   }
@@ -24,7 +25,7 @@ createInertiaApp<SharedProps>({
     createRoot(el).render(
       <LaravelReactI18nProvider
         lang={props.initialPage.props.locale}
-        fallbackLang={'en'}
+        fallbackLang={props.initialPage.props.fallbackLang}
         resolve={async (lang: string) => {
           return props.initialPage.props.translations[lang]
         }}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\LocaleController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,6 +23,8 @@ Route::group([], function () {
 
     // Route for logout
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('locale/{language}', [LocaleController::class, 'setLanguage'])->name('setLanguage');
 });
 
 Route::middleware(['auth'])->group(function () {

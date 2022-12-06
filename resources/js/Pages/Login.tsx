@@ -27,6 +27,7 @@ export default function Login (): JSX.Element {
   }
 
   function handleLang (lang: string): void {
+    Inertia.get(route('setLanguage', { language: lang }))
     setLang?.(lang)
   }
 
@@ -35,7 +36,7 @@ export default function Login (): JSX.Element {
       { t?.('validation.required') }
 
       <button onClick={ (e) => { e.preventDefault(); handleLang('en') } }>EN</button>
-      <button onClick={ (e) => { e.preventDefault(); handleLang('cz') } }>CZ</button>
+      <button onClick={ (e) => { e.preventDefault(); handleLang('cs') } }>CS</button>
 
       <label htmlFor="email">E-mail:</label>
       <input id="email" value={values.email} onChange={handleChange} />

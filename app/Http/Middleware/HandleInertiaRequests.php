@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App;
+use App\Services\Locale\LocaleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Inertia\Middleware;
@@ -42,22 +44,29 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $props = [];
+        $localeNames = collect(LocaleService::getActiveLocaleNames());
 
         if (! $request->ajax()) {
             $loader = app('translation.loader');
+            $groups = ['auth', 'locale', 'pagination', 'passwords', 'validation'];
             $languages = [];
 
-            $translations = [];
-            $translations['validation'] = $loader->load('en', 'validation');
-            $languages['en'] = ['default' => Arr::dot($translations)];
+            foreach ($localeNames->keys() as $langCode) {
+                $translations = [];
 
-            $translations = [];
-            $translations['validation'] = $loader->load('cz', 'validation');
-            $languages['cz'] = ['default' => Arr::dot($translations)];
+                foreach ($groups as $group) {
+                    $translations[$group] = $loader->load($langCode, $group);
+                }
 
-            $props['locale'] = app()->getLocale();
+                $languages[$langCode] = ['default' => Arr::dot($translations)];
+            }
+
+            $props['locale'] = App::getLocale();
+            $props['fallbackLang'] = config('app.locale');
             $props['translations'] = $languages;
         }
+
+        $props['localeNames'] = $localeNames;
 
         return array_merge(parent::share($request), $props);
     }
