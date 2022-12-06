@@ -45,7 +45,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $appLocale = config('app.locale');
+        $appLocale = config('app.fallback_locale');
         if (! is_string($appLocale) || ! LocaleService::isLocaleValid($appLocale)) {
             throw new UnexpectedValueException('Given locale value is not allowed.');
         }

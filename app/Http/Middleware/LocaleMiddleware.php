@@ -22,7 +22,7 @@ class LocaleMiddleware
         $locale = Session::get(LocaleService::SESSION_LOCALE_KEY);
 
         if (empty($locale)) {
-            $locale = Config::get('app.locale');
+            $locale = Config::get('app.fallback_locale');
         }
 
         if (is_string($locale) && LocaleService::isLocaleValid($locale)) {
