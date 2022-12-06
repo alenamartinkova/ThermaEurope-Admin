@@ -4,9 +4,11 @@ namespace App\Http\Middleware;
 
 use App;
 use App\Services\Locale\LocaleService;
+use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Inertia\Middleware;
+use UnexpectedValueException;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -43,19 +45,31 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $appLocale = config('app.locale');
+        if (! is_string($appLocale) || ! LocaleService::isLocaleValid($appLocale)) {
+            throw new UnexpectedValueException('Given locale value is not allowed.');
+        }
+
         $props = [];
         $localeNames = collect(LocaleService::getActiveLocaleNames());
 
         if (! $request->ajax()) {
             $loader = app('translation.loader');
-            $groups = ['auth', 'locale', 'pagination', 'passwords', 'validation'];
+            $groups = [];
             $languages = [];
+
+            foreach (File::allFiles(lang_path($appLocale)) as $file) {
+                $groups[] = $file->getFilenameWithoutExtension();
+            }
 
             foreach ($localeNames->keys() as $langCode) {
                 $translations = [];
 
                 foreach ($groups as $group) {
-                    $translations[$group] = $loader->load($langCode, $group);
+                    $messages = $loader->load($langCode, $group);
+                    if (! empty($messages)) {
+                        $translations[$group] = $messages;
+                    }
                 }
 
                 $languages[$langCode] = ['default' => Arr::dot($translations)];
