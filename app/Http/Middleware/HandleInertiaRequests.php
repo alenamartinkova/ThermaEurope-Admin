@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -40,8 +41,24 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return array_merge(parent::share($request), [
-            //
-        ]);
+        $props = [];
+
+        if (! $request->ajax()) {
+            $loader = app('translation.loader');
+            $languages = [];
+
+            $translations = [];
+            $translations['validation'] = $loader->load('en', 'validation');
+            $languages['en'] = ['default' => Arr::dot($translations)];
+
+            $translations = [];
+            $translations['validation'] = $loader->load('cz', 'validation');
+            $languages['cz'] = ['default' => Arr::dot($translations)];
+
+            $props['locale'] = app()->getLocale();
+            $props['translations'] = $languages;
+        }
+
+        return array_merge(parent::share($request), $props);
     }
 }

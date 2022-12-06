@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Inertia } from '@inertiajs/inertia'
 import { usePage } from '@inertiajs/inertia-react'
 import route from 'ziggy-js'
+import { useLaravelReactI18n } from 'laravel-react-i18n'
 
 export default function Login (): JSX.Element {
+  const { t, setLang } = useLaravelReactI18n()
   const { errors } = usePage().props
   const [values, setValues] = useState({
     email: '',
@@ -24,8 +26,17 @@ export default function Login (): JSX.Element {
     Inertia.post(route('login'), values)
   }
 
+  function handleLang (lang: string): void {
+    setLang?.(lang)
+  }
+
   return (
     <form onSubmit={handleSubmit}>
+      { t?.('validation.required') }
+
+      <button onClick={ (e) => { e.preventDefault(); handleLang('en') } }>EN</button>
+      <button onClick={ (e) => { e.preventDefault(); handleLang('cz') } }>CZ</button>
+
       <label htmlFor="email">E-mail:</label>
       <input id="email" value={values.email} onChange={handleChange} />
       {errors.email !== undefined && <div>{errors.email}</div>}

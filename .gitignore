@@ -10,7 +10,7 @@ app/storage/
 # Laravel 5 & Lumen specific
 public/storage
 public/hot
-public/build 
+public/build
 
 # Laravel 5 & Lumen specific with changed public path
 public_html/storage
@@ -47,3 +47,6 @@ _ide_helper_models.php
 cypress/downloads
 cypress/screenshots
 cypress/videos
+
+###laravel-react-i18n ###
+lang/php_*.json
