@@ -14,14 +14,16 @@ createInertiaApp<SharedProps>({
   },
   setup ({ el, App, props }) {
     createRoot(el).render(
-      <LaravelReactI18nProvider
-        lang={props.initialPage.props.locale}
-        resolve={async (lang: string) => {
-          return props.initialPage.props.translations[lang]
-        }}
-      >
-        <App {...props} />
-      </LaravelReactI18nProvider>
+      <React.StrictMode>
+        <LaravelReactI18nProvider
+          lang={props.initialPage.props.locale}
+          resolve={async (lang: string) => {
+            return props.initialPage.props.translations[lang]
+          }}
+        >
+          <App {...props} />
+        </LaravelReactI18nProvider>
+      </React.StrictMode>
     )
 
     InertiaProgress.init()
