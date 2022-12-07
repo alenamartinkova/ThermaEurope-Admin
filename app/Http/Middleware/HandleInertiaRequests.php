@@ -76,7 +76,7 @@ class HandleInertiaRequests extends Middleware
             }
 
             $props['locale'] = App::getLocale();
-            $props['fallbackLang'] = config('app.locale');
+            $props['fallbackLang'] = $appLocale;
             $props['translations'] = $languages;
         }
 

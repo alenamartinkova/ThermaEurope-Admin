@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\Locale\LocaleController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 

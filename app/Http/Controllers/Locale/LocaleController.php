@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Locale;
 
+use App\Http\Controllers\Controller;
 use App\Services\Locale\LocaleService;
 use UnexpectedValueException;
 
@@ -13,8 +14,7 @@ class LocaleController extends Controller
      */
     public function setLanguage(string $langCode): void
     {
-        $locales = LocaleService::getActiveLocaleNames();
-        if (! array_key_exists($langCode, $locales)) {
+        if (! LocaleService::isLocaleValid($langCode)) {
             throw new UnexpectedValueException('Given value is not valid code of active locale.');
         }
 

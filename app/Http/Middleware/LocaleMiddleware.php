@@ -19,10 +19,11 @@ class LocaleMiddleware
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        $locale = Session::get(LocaleService::SESSION_LOCALE_KEY);
+        $locale = Config::get('app.fallback_locale');
+        $sessionLocale = Session::get(LocaleService::SESSION_LOCALE_KEY);
 
-        if (empty($locale)) {
-            $locale = Config::get('app.fallback_locale');
+        if (is_string($sessionLocale) && LocaleService::isLocaleValid($sessionLocale)) {
+            $locale = $sessionLocale;
         }
 
         if (is_string($locale) && LocaleService::isLocaleValid($locale)) {
