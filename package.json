@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite --host 0.0.0.0 --port 5173",
-        "build": "tsc --noEmit && vite build"
+        "build": "tsc --noEmit && vite build",
+        "lint": "stylelint \"**/*.scss\""
     },
     "devDependencies": {
         "@types/react-dom": "^18.0.9",
@@ -34,6 +35,9 @@
         "laravel-react-i18n": "^1.0.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "stylelint": "^14.16.0",
+        "stylelint-config-sass-guidelines": "^9.0.1",
+        "stylelint-scss": "^4.3.0",
         "vite-plugin-checker": "^0.5.1",
         "ziggy-js": "^1.5.0"
     }

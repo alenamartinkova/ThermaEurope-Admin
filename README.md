@@ -21,6 +21,14 @@
   - `make eslint-fix`
   - `make pint-fix`
 
+## CSS
+- We use SASS. 
+- CSS styles are build using Vite together with JS.
+  - Use `make vite` to watch *.scss files changes
+- Read this guideline https://sass-guidelin.es/ to understand style coding standards
+  - Run `make stylelint` to check it.
+  - It's also part of `make check` command.
+
 ## Tests
 - Run `make test` within `thermaeurope_app-admin` docker container.
 

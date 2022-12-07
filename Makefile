@@ -12,6 +12,9 @@ eslint:
 eslint-fix:
 	npx eslint resources/js/* --fix
 
+stylelint:
+	npm run lint
+
 missing-translations:
 	php artisan translation:missing --lang=en
 
@@ -23,6 +26,7 @@ check:
 	make phpstan
 	npx tsc --noEmit
 	make eslint
+	make stylelint
 	make missing-translations | grep 'No missing translation' || echo 'Some translations are missing. Run `make missing-translations` and add them.' >&2 | exit 1
 
 pint:
