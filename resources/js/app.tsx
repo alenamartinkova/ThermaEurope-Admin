@@ -6,16 +6,7 @@ import * as React from 'react'
 import { createRoot } from 'react-dom/client'
 import { InertiaProgress } from '@inertiajs/progress'
 import { LaravelReactI18nProvider } from 'laravel-react-i18n'
-import { LanguageJsonFileInterface } from 'laravel-react-i18n/src/interfaces/language-json-file'
-import { PageProps } from '@inertiajs/inertia'
-
-interface SharedProps extends PageProps {
-  locale: string
-  fallbackLang: string
-  translations: {
-    [key: string]: LanguageJsonFileInterface
-  }
-}
+import { SharedProps } from './Interfaces/SharedProps'
 
 createInertiaApp<SharedProps>({
   resolve: async (name) => {
@@ -25,7 +16,6 @@ createInertiaApp<SharedProps>({
     createRoot(el).render(
       <LaravelReactI18nProvider
         lang={props.initialPage.props.locale}
-        fallbackLang={props.initialPage.props.fallbackLang}
         resolve={async (lang: string) => {
           return props.initialPage.props.translations[lang]
         }}

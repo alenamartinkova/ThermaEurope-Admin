@@ -7,7 +7,9 @@ use App\Services\Locale\LocaleService;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Inertia\Middleware;
+use Spatie\TranslationLoader\TranslationLoaderManager;
 use UnexpectedValueException;
 
 class HandleInertiaRequests extends Middleware
@@ -22,6 +24,16 @@ class HandleInertiaRequests extends Middleware
     protected $rootView = 'app';
 
     /**
+     * @var TranslationLoaderManager
+     */
+    protected TranslationLoaderManager $loader;
+
+    public function __construct()
+    {
+        $this->loader = app('translation.loader');
+    }
+
+    /**
      * Determines the current asset version.
      *
      * @see https://inertiajs.com/asset-versioning
@@ -32,6 +44,40 @@ class HandleInertiaRequests extends Middleware
     public function version(Request $request): ?string
     {
         return parent::version($request);
+    }
+
+    /**
+     * @param  string  $locale
+     * @return Collection<int, string>
+     */
+    private function getLocaleTranslationGroups(string $locale): Collection
+    {
+        $groups = new Collection();
+
+        foreach (File::allFiles(lang_path($locale)) as $file) {
+            $groups->push($file->getFilenameWithoutExtension());
+        }
+
+        return $groups;
+    }
+
+    /**
+     * @param  string  $locale
+     * @param  Collection<int, string>  $groups
+     * @return Collection<string, string>
+     */
+    private function getLanguageMessages(string $locale, Collection $groups): Collection
+    {
+        $translations = new Collection();
+
+        foreach ($groups as $group) {
+            $messages = $this->loader->load($locale, $group);
+            if (! empty($messages)) {
+                $translations->put($group, $messages);
+            }
+        }
+
+        return collect(Arr::dot($translations));
     }
 
     /**
@@ -54,30 +100,18 @@ class HandleInertiaRequests extends Middleware
         $localeNames = collect(LocaleService::getActiveLocaleNames());
 
         if (! $request->ajax()) {
-            $loader = app('translation.loader');
-            $groups = [];
-            $languages = [];
-
-            foreach (File::allFiles(lang_path($appLocale)) as $file) {
-                $groups[] = $file->getFilenameWithoutExtension();
-            }
+            $translations = [];
+            $groups = $this->getLocaleTranslationGroups($appLocale);
+            $defaultMessages = $this->getLanguageMessages($appLocale, $groups);
 
             foreach ($localeNames->keys() as $langCode) {
-                $translations = [];
+                $messages = $this->getLanguageMessages($langCode, $groups);
 
-                foreach ($groups as $group) {
-                    $messages = $loader->load($langCode, $group);
-                    if (! empty($messages)) {
-                        $translations[$group] = $messages;
-                    }
-                }
-
-                $languages[$langCode] = ['default' => Arr::dot($translations)];
+                $translations[$langCode] = ['default' => $defaultMessages->merge($messages)];
             }
 
             $props['locale'] = App::getLocale();
-            $props['fallbackLang'] = $appLocale;
-            $props['translations'] = $languages;
+            $props['translations'] = $translations;
         }
 
         $props['localeNames'] = $localeNames;
