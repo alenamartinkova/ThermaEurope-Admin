@@ -33,24 +33,26 @@ export default function Login (): JSX.Element {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {Object.keys(localeNames).map((localeCode) => {
-        return (
-          <button key={localeCode} onClick={ (e) => { e.preventDefault(); handleLang(localeCode) } }>
-            {t?.(localeNames[localeCode])}
-          </button>
-        )
-      })}
+    <>
+      <form onSubmit={handleSubmit}>
+        {Object.keys(localeNames).map((localeCode) => {
+          return (
+            <button key={localeCode} onClick={ (e) => { e.preventDefault(); handleLang(localeCode) } }>
+              {t?.(localeNames[localeCode])}
+            </button>
+          )
+        })}
 
-      <label htmlFor="email">E-mail:</label>
-      <input id="email" value={values.email} onChange={handleChange} />
-      {errors.email !== undefined && <div>{errors.email}</div>}
+        <label htmlFor="email">E-mail:</label>
+        <input id="email" value={values.email} onChange={handleChange} />
+        {errors.email !== undefined && <div>{errors.email}</div>}
 
-      <label htmlFor="password">password:</label>
-      <input id="password" type="password" value={values.password} onChange={handleChange} />
-      {errors.password !== undefined && <div>{errors.password}</div>}
+        <label htmlFor="password">password:</label>
+        <input id="password" type="password" value={values.password} onChange={handleChange} />
+        {errors.password !== undefined && <div>{errors.password}</div>}
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
+    </>
   )
 }

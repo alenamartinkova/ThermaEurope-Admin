@@ -1,0 +1,6 @@
+@use 'variables';
+@use 'sass-mq/mq' as * with (
+  $breakpoints: variables.$breakpoints
+);
+
+@forward 'sass-mq/mq';
