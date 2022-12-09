@@ -8,6 +8,9 @@ export interface SharedProps extends PageProps {
     [key: string]: LanguageJsonFileInterface
   }
   localeNames: {
-    [key: string]: string
+    [key: string]: {
+      name: string
+      icon: string
+    }
   }
 }

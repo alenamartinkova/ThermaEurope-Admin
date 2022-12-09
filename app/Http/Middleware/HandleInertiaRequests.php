@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App;
+use App\Http\Middleware\Dto\LocaleDto;
 use App\Services\Locale\LocaleService;
 use File;
 use Illuminate\Http\Request;
@@ -28,9 +29,12 @@ class HandleInertiaRequests extends Middleware
      */
     protected TranslationLoaderManager $loader;
 
-    public function __construct()
+    protected LocaleService $localeService;
+
+    public function __construct(LocaleService $localeService)
     {
         $this->loader = app('translation.loader');
+        $this->localeService = $localeService;
     }
 
     /**
@@ -92,12 +96,12 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $appLocale = config('app.fallback_locale');
-        if (! is_string($appLocale) || ! LocaleService::isLocaleValid($appLocale)) {
+        if (! is_string($appLocale) || ! $this->localeService->isLocaleValid($appLocale)) {
             throw new UnexpectedValueException('Given locale value is not allowed.');
         }
 
         $props = [];
-        $localeNames = collect(LocaleService::getActiveLocaleNames());
+        $localeNames = $this->localeService->getActiveLocales();
 
         if (! $request->ajax()) {
             $translations = [];
@@ -114,7 +118,9 @@ class HandleInertiaRequests extends Middleware
             $props['translations'] = $translations;
         }
 
-        $props['localeNames'] = $localeNames;
+        $props['localeNames'] = $localeNames->map(function (LocaleDto $localeName) {
+            return ['name' => $localeName->getName(), 'icon' => $localeName->getIcon()];
+        });
 
         return array_merge(parent::share($request), $props);
     }

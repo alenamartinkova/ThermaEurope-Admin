@@ -2,32 +2,40 @@
 
 namespace App\Services\Locale;
 
+use App\Http\Middleware\Dto\LocaleDto;
+use Illuminate\Support\Collection;
+
 class LocaleService
 {
     const SESSION_LOCALE_KEY = 'locale';
 
     /**
-     * @var array<string, string>
+     * @var Collection<string, LocaleDto>
      */
-    private static array $activeLocaleNames = [
-        'en' => 'locale.english',
-        'cs' => 'locale.czech',
-    ];
+    private Collection $activeLocales;
+
+    public function __construct()
+    {
+        $this->activeLocales = collect([
+            'en' => new LocaleDto('locale.english', '/images/layout/uk-flag.svg'),
+            'cs' => new LocaleDto('locale.czech', '/images/layout/cz-flag.svg'),
+        ]);
+    }
 
     /**
-     * @return array<string, string>
+     * @return Collection<string, LocaleDto>
      */
-    public static function getActiveLocaleNames(): array
+    public function getActiveLocales(): Collection
     {
-        return self::$activeLocaleNames;
+        return $this->activeLocales;
     }
 
     /**
      * @param  string  $locale
      * @return bool
      */
-    public static function isLocaleValid(string $locale): bool
+    public function isLocaleValid(string $locale): bool
     {
-        return array_key_exists($locale, LocaleService::getActiveLocaleNames());
+        return $this->getActiveLocales()->offsetExists($locale);
     }
 }

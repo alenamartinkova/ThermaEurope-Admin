@@ -12,6 +12,16 @@ use UnexpectedValueException;
 
 class LocaleMiddleware
 {
+    private LocaleService $localeService;
+
+    /**
+     * @param  LocaleService  $localeService
+     */
+    public function __construct(LocaleService $localeService)
+    {
+        $this->localeService = $localeService;
+    }
+
     /**
      * @param  Request  $request
      * @param  Closure  $next
@@ -22,11 +32,11 @@ class LocaleMiddleware
         $locale = Config::get('app.fallback_locale');
         $sessionLocale = Session::get(LocaleService::SESSION_LOCALE_KEY);
 
-        if (is_string($sessionLocale) && LocaleService::isLocaleValid($sessionLocale)) {
+        if (is_string($sessionLocale) && $this->localeService->isLocaleValid($sessionLocale)) {
             $locale = $sessionLocale;
         }
 
-        if (is_string($locale) && LocaleService::isLocaleValid($locale)) {
+        if (is_string($locale) && $this->localeService->isLocaleValid($locale)) {
             App::setLocale($locale);
         } else {
             throw new UnexpectedValueException('Given locale value is not allowed.');

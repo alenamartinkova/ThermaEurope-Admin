@@ -40,7 +40,8 @@ export default function LanguageMenu (): JSX.Element {
             {Object.keys(localeNames).map((localeCode) => {
               return (
                 <Select.SelectItem key={localeCode} value={localeCode} className={'item'}>
-                    {t?.(localeNames[localeCode])}
+                    <img className={'lang-icon'} src={localeNames[localeCode].icon} alt={t?.(localeNames[localeCode].name)}/>
+                    {t?.(localeNames[localeCode].name)}
                 </Select.SelectItem>
               )
             })}
