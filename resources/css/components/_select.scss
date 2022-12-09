@@ -1,0 +1,8 @@
+@use '../abstracts/colors';
+
+.select {
+  [data-highlighted] {
+    background-color: colors.$hoverGrey;
+    outline: none;
+  }
+}

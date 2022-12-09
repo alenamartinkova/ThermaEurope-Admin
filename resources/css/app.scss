@@ -1,4 +1,5 @@
 @charset "utf-8";
 
-@use 'abstracts/mq';
-@use 'abstracts/variables';
+@use 'components/select';
+@use 'components/language-menu';
+@use 'pages/layout';

@@ -1,0 +1,64 @@
+@use '../abstracts/colors';
+@use '../abstracts/mq';
+
+body {
+  color: colors.$black;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  margin: 90px 0 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+header {
+  align-items: center;
+  background-color: colors.$white;
+  box-shadow: 1px 1px 5px 0 rgb(0 0 0 / 15%);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  min-height: 60px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1001;
+
+  @include mq.mq($from: small) {
+    min-height: 70px;
+  }
+
+  .wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0 20px;
+    width: 100%;
+  }
+}
+
+.spanamo-logo {
+  align-items: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 25px;
+  display: flex;
+  height: 50px;
+  padding: 0 20px;
+  width: fit-content;
+
+  @include mq.mq($until: small) {
+    height: 40px;
+    width: 157px;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+img {
+  vertical-align: bottom;
+}

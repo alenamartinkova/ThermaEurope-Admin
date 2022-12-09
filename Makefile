@@ -15,6 +15,9 @@ eslint-fix:
 stylelint:
 	npm run lint
 
+stylelint-fix:
+	npm run lint-fix
+
 missing-translations:
 	php artisan translation:missing --lang=en
 

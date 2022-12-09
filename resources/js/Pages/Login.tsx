@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import { Inertia, Page } from '@inertiajs/inertia'
 import { usePage } from '@inertiajs/inertia-react'
 import route from 'ziggy-js'
-import { useLaravelReactI18n } from 'laravel-react-i18n'
 import { SharedProps } from '../Interfaces/SharedProps'
 
 export default function Login (): JSX.Element {
-  const { t, setLang } = useLaravelReactI18n()
-  const { errors, localeNames } = usePage<Page<SharedProps>>().props
+  const { errors } = usePage<Page<SharedProps>>().props
   const [values, setValues] = useState({
     email: '',
     password: ''
@@ -27,22 +25,9 @@ export default function Login (): JSX.Element {
     Inertia.post(route('login'), values)
   }
 
-  function handleLang (lang: string): void {
-    Inertia.get(route('setLanguage', { language: lang }))
-    setLang?.(lang)
-  }
-
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {Object.keys(localeNames).map((localeCode) => {
-          return (
-            <button key={localeCode} onClick={ (e) => { e.preventDefault(); handleLang(localeCode) } }>
-              {t?.(localeNames[localeCode])}
-            </button>
-          )
-        })}
-
         <label htmlFor="email">E-mail:</label>
         <input id="email" value={values.email} onChange={handleChange} />
         {errors.email !== undefined && <div>{errors.email}</div>}
