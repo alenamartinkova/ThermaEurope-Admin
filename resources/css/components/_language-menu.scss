@@ -1,95 +1,32 @@
-@use '../abstracts/colors';
-@use '../abstracts/mq';
-
 .language-menu {
-  align-items: flex-end;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-
   > div {
-    @include mq.mq($until: small) {
-      background-color: colors.$white;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 56px;
+    background-color: theme('colors.white');
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: theme('spacing.14');
+
+    @screen sm {
+      bottom: unset;
+      left: unset;
+      right: unset;
+      top: unset;
     }
   }
 
   .content {
-    background-color: colors.$white;
-    border-radius: 10px;
-    box-shadow: 0 1px 5px 1px rgb(0 0 0 / 13%);
-    padding: 10px;
-    position: fixed;
-    right: 20px;
+    box-shadow: unset;
 
-    @include mq.mq($until: small) {
-      border-radius: 0;
-      border-top: 1px solid #cdd0d4;
-      box-shadow: unset;
-      left: 0;
-      overflow-y: scroll;
-      padding: 10px 8px;
-      right: 0;
-      top: 60px;
-      width: 100%;
+    @screen sm {
+      box-shadow: 0 1px 5px 1px rgb(0 0 0 / 13%);
     }
   }
 
-  .viewport {
-    min-width: 250px;
-  }
-
-  .title {
-    font-weight: 500;
-    line-height: 21px;
-    padding: 10px;
-  }
-
-  .item {
-    align-items: center;
-    border-radius: 5px;
-    display: flex;
-    padding: 10px;
-  }
-
   .item[data-state='checked'] {
-    background-color: colors.$light-cyan;
-  }
-
-  .lang-icon {
-    width: 20px;
-    margin-right: 10px;
-  }
-}
-
-.language-menu-trigger {
-  background-color: colors.$white;
-  border: 0;
-  border-radius: 25px;
-  height: 50px;
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @include mq.mq($until: small) {
-    height: 40px;
-    width: 40px;
-  }
-
-  &:hover {
-    background-color: colors.$hover-grey;
-    border: 1px solid colors.$hover-grey;
-  }
-
-  &:focus-visible {
-    outline: none;
+    background-color: theme('colors.cyan-light');
   }
 }
 
 .language-menu-trigger[data-state='open'] {
-  background-color: colors.$grey-light;
+  background-color: theme('colors.gray-light')
 }
