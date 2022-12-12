@@ -27,7 +27,7 @@ export default function LanguageMenu (): JSX.Element {
     <div className="select language-menu">
       <Select.Root value={value} onValueChange={ langCode => handleLangChange(langCode)}>
       <Select.Trigger className="language-menu-trigger">
-        <Select.Icon>
+        <Select.Icon asChild={true}>
           <img src ="/images/layout/language-select-icon.svg" alt="language-select-icon"/>
         </Select.Icon>
       </Select.Trigger>
