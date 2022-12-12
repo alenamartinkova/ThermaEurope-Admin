@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+@use 'tailwindcss/base.css';
+@use 'tailwindcss/components.css';
+@use 'tailwindcss/utilities.css';
+
 @use 'components/select';
 @use 'components/language-menu';
 @use 'pages/layout';
