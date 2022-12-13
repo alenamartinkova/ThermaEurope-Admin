@@ -1,32 +1,32 @@
 .language-menu {
-  > div {
-    background-color: theme('colors.white');
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: theme('spacing.14');
-
-    @screen sm {
-      bottom: unset;
-      left: unset;
-      right: unset;
-      top: unset;
-    }
-  }
-
-  .content {
-    box-shadow: unset;
-
-    @screen sm {
-      box-shadow: 0 1px 5px 1px rgb(0 0 0 / 13%);
-    }
-  }
-
   .item[data-state='checked'] {
     background-color: theme('colors.cyan-light');
   }
 }
 
+.language-menu .content {
+  box-shadow: unset;
+
+  @screen sm {
+    box-shadow: 0 1px 5px 1px rgb(0 0 0 / 13%);
+  }
+}
+
+.language-menu > div {
+  background-color: theme('colors.white');
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: theme('spacing.14');
+
+  @screen sm {
+    bottom: unset;
+    left: unset;
+    right: unset;
+    top: unset;
+  }
+}
+
 .language-menu-trigger[data-state='open'] {
-  background-color: theme('colors.gray-light')
+  background-color: theme('colors.gray-light');
 }
