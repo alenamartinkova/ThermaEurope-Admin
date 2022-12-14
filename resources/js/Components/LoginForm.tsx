@@ -35,7 +35,7 @@ export default function LoginForm (): JSX.Element {
           <Input
             id="email"
             type="text"
-            placeholder={t?.('pageLogin.login_form.email_placeholder')}
+            placeholder={t?.('page_login.login_form.email_placeholder')}
             value={values.email}
             onChange={handleChange}
             error={errors.email}
@@ -46,7 +46,7 @@ export default function LoginForm (): JSX.Element {
           <Input
             id="password"
             type="password"
-            placeholder={t?.('pageLogin.login_form.password_placeholder')}
+            placeholder={t?.('page_login.login_form.password_placeholder')}
             value={values.password}
             onChange={handleChange}
             error={errors.password}
@@ -55,7 +55,7 @@ export default function LoginForm (): JSX.Element {
       </div>
 
       <button type="submit" className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
-        {t?.('pageLogin.login_form.log_in')}
+        {t?.('page_login.login_form.log_in')}
       </button>
     </form>
   )

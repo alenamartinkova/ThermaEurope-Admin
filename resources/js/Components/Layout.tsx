@@ -22,7 +22,7 @@ export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
             </Link>
           </div>
 
-          <div className={'flex flex-row flex-nowrap gap-x-3.5'}>
+          <div className={'flex flex-row flex-nowrap gap-x-3.5 pl-3.5'}>
             <AccountMenu/>
             <LanguageMenu/>
           </div>
