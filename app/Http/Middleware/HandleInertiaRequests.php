@@ -9,6 +9,7 @@ use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Spatie\TranslationLoader\TranslationLoaderManager;
 use UnexpectedValueException;
@@ -121,6 +122,8 @@ class HandleInertiaRequests extends Middleware
         $props['localeNames'] = $localeNames->map(function (LocaleDto $localeName) {
             return ['name' => $localeName->getName(), 'icon' => $localeName->getIcon()];
         });
+
+        $props['user'] = Auth::user();
 
         return array_merge(parent::share($request), $props);
     }

@@ -1,7 +1,12 @@
 <?php
 
 return [
-    'lang_select_title' => 'Choose your language',
+    'account_menu' => [
+        'logout' => 'Log out',
+    ],
+    'language_menu' => [
+        'title' => 'Choose your language',
+    ],
     'main_menu' => [
         'title' => 'Main Menu',
         'home' => 'Home',

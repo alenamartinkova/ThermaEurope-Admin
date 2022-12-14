@@ -17,9 +17,7 @@
 ## Code Check
 - Run `make check` within `thermaeurope_app-admin` docker container.
 - It runs all code checks (PHP, JS).
-- According to errors you get you can run this commands to auto-fix some of them.
-  - `make eslint-fix`
-  - `make pint-fix`
+- According to errors you can run `make fix` to auto-fix some of them.
 
 ## CSS
 - We use SASS. 

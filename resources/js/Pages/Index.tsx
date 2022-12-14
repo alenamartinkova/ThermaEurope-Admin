@@ -1,12 +1,13 @@
 import React from 'react'
-import { Link } from '@inertiajs/inertia-react'
 
 export default function Index (): JSX.Element {
   return (
-    <>
-        <h1>Welcome</h1>
+    <div className={'w-full flex flex-row flex-nowrap'}>
+      <div>
 
-        <Link href="/logout">Logout</Link>
-    </>
+      </div>
+
+      <h1>Welcome</h1>
+    </div>
   )
 }

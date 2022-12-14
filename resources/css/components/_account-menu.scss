@@ -1,0 +1,46 @@
+.avatar-placeholder svg {
+  fill: theme('colors.grey-text');
+  height: theme('spacing.[5]');
+  width: theme('spacing.[5]');
+
+  @screen sm {
+    height: theme('spacing.[7]');
+    width: theme('spacing.[7]');
+  }
+}
+
+.account-menu {
+  .item[data-highlighted] {
+    background-color: theme('colors.gray-hover');
+    outline: none;
+  }
+
+  .item-icon {
+    fill: theme('colors.grey-text');
+  }
+}
+
+.account-menu .content {
+  box-shadow: unset;
+
+  @screen sm {
+    box-shadow: 0 1px 5px 1px rgb(0 0 0 / 13%);
+  }
+}
+
+.account-menu > div {
+  background-color: theme('colors.white');
+  bottom: 0;
+  padding-top: theme('spacing.[2.5]');
+  right: 0;
+
+  @screen sm {
+    bottom: unset;
+    padding-top: unset;
+    right: unset;
+  }
+}
+
+.account-menu-trigger[data-state='open'] {
+  background-color: theme('colors.gray-light');
+}
