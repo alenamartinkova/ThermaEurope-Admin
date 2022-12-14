@@ -2,6 +2,7 @@ import React from 'react'
 
 interface InputProps {
   id: string
+  type: 'text' | 'password'
   value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   placeholder?: string
@@ -9,12 +10,13 @@ interface InputProps {
 }
 
 export default function Input (props: InputProps): JSX.Element {
-  const { error, id, placeholder, value, onChange } = props
+  const { error, id, type, placeholder, value, onChange } = props
 
   return (
     <div>
       <input
         id={id}
+        type={type}
         className={`${error !== undefined ? 'error' : ''} input w-full`}
         placeholder={placeholder}
         value={value}
