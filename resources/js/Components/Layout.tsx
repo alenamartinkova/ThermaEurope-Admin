@@ -26,8 +26,8 @@ export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
         </div>
       </header>
 
-      <div className={'pt-15 sm:pt-17'}>
-        <article className={'mt-5'}>{props.children}</article>
+      <div className={'py-15 sm:py-17'}>
+        <article>{props.children}</article>
       </div>
     </>
   )

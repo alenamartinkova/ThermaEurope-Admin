@@ -7,3 +7,24 @@
 header {
   box-shadow: 1px 1px 5px 0 rgb(0 0 0 / 15%);
 }
+
+.input {
+  @apply border-grey-border;
+  @apply pl-5;
+  @apply pr-12;
+  @apply py-3;
+  @apply rounded-10;
+  @apply text-base;
+  @apply border;
+  @apply text-input;
+
+  &:focus {
+    @apply border-blue-active;
+    box-shadow: 1px 3px 6px 0 rgb(0 186 204 / 16%), -1px 2px 5px 0 rgb(0 186 204 / 16%);
+  }
+}
+
+.input.error {
+  @apply border-error-red;
+  box-shadow: 0 3px 6px rgba(234, 2, 21, 0.15);
+}

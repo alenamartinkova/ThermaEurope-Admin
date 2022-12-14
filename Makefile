@@ -24,6 +24,11 @@ missing-translations:
 unused-translations:
 	php artisan translation:unused --lang=en
 
+fix:
+	make pint-fix
+	make eslint-fix
+	make stylelint-fix
+
 check:
 	make pint
 	make phpstan

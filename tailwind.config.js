@@ -26,13 +26,16 @@ module.exports = {
         black: '#333',
         'blue-active': '#00BACC',
         'cyan-light': '#E5F6F8',
+        'error-red': '#EA0215',
         'gray-light': '#dbdbdb',
         'gray-hover': '#f0f0f0',
         'grey-input': '#CDD0D4',
         'grey-text': '#707070',
+        'grey-border': '#C8CBD0',
         gray: {
           750: '#333'
-        }
+        },
+        input: '#757575'
       },
       fontFamily: {
         body: ['Montserrat', 'sans-serif']
