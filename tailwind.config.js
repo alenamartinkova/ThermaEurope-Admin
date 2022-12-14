@@ -18,16 +18,18 @@ module.exports = {
         25: '1.5625rem'
       },
       spacing: {
-        13: '3.125', // 50px
+        13: '3.125rem', // 50px
         15: '3.75rem', // 60px
         17: '4.375rem' // 70px
       },
       colors: {
         black: '#333',
+        'blue-active': '#00BACC',
         'cyan-light': '#E5F6F8',
         'gray-light': '#dbdbdb',
         'gray-hover': '#f0f0f0',
         'grey-input': '#CDD0D4',
+        'grey-text': '#707070',
         gray: {
           750: '#333'
         }

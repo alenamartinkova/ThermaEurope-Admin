@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Locale\LocaleController;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -31,4 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return Inertia::render('Index');
     })->name('home');
+
+    // Reservations
+    Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation.index');
 });

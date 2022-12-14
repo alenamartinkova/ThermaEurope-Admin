@@ -1,0 +1,22 @@
+.main-menu {
+  color: theme('colors.grey-text');
+
+  svg {
+    fill: theme('colors.grey-text');
+  }
+}
+
+.main-menu-item {
+  &:hover {
+    background-color: theme('colors.gray-hover');
+  }
+}
+
+.main-menu-item.active {
+  background-color: theme('colors.cyan-light');
+  color: theme('colors.blue-active');
+
+  svg {
+    fill: theme('colors.blue-active');
+  }
+}
