@@ -43,7 +43,7 @@ export default function OffCanvas (): JSX.Element {
 
                 {/* Menu Items */}
                 <div className={'pt-15 sm:pt-17 pr-7'}>
-                  <MainMenu activeItem={offCanvasActiveItem}/>
+                  <MainMenu onItemClick={toggleIsOpen} activeItem={offCanvasActiveItem}/>
                 </div>
               </div>
             </div>

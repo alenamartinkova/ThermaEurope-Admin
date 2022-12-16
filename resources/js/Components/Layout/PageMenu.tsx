@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, PropsWithChildren, useContext, useState } from 'react'
 import SwipeLeft from '../Icons/SwipeLeft'
 import SwipeRight from '../Icons/SwipeRight'
 
 const CollapsedContext = createContext<boolean>(false)
 
-export default function PageMenu (props: { allowCollapse?: boolean, children?: React.ReactNode }): JSX.Element {
+export default function PageMenu (props: PropsWithChildren<{ allowCollapse?: boolean }>): JSX.Element {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
   const toggleIsCollapsed = (): void => setIsCollapsed(!isCollapsed)
   const { allowCollapse } = props
@@ -26,7 +26,7 @@ export default function PageMenu (props: { allowCollapse?: boolean, children?: R
   )
 }
 
-export function MenuItem (props: { isActive?: boolean, onClick: () => void, children?: React.ReactNode }): JSX.Element {
+export function MenuItem (props: PropsWithChildren<{ isActive?: boolean, onClick: () => void }>): JSX.Element {
   const isCollapsed = useContext(CollapsedContext)
 
   return (
@@ -36,7 +36,7 @@ export function MenuItem (props: { isActive?: boolean, onClick: () => void, chil
   )
 }
 
-export function MenuItemLabel (props: { children?: React.ReactNode }): JSX.Element {
+export function MenuItemLabel (props: PropsWithChildren<{}>): JSX.Element {
   const isCollapsed = useContext(CollapsedContext)
 
   return (

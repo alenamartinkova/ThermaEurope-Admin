@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useActiveItemUpdate } from '../Providers/OffCanvasContextProvider'
-import MainMenu from '../Components/Layout/MainMenu'
 import PageLayout from '../Components/Layout/PageLayout'
+import IndexPageMenu from '../Components/IndexPageMenu'
 
 export default function ReservationList (): JSX.Element {
   const setOffCanvasActiveItem = useActiveItemUpdate()
@@ -13,7 +13,7 @@ export default function ReservationList (): JSX.Element {
   return (
     <PageLayout
       title={'Reservations'}
-      menu={<MainMenu activeItem={'reservation'}/>}
+      menu={<IndexPageMenu activeItem={'reservation'}/>}
       mainMenuActiveItem={'reservation'}
     >
       Reservation list!!!

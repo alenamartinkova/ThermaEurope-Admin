@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
-import MainMenu from '../Components/Layout/MainMenu'
 import PageLayout from '../Components/Layout/PageLayout'
+import IndexPageMenu from '../Components/IndexPageMenu'
 
 export default function Index (): JSX.Element {
   const { t } = useLaravelReactI18n()
@@ -9,7 +9,7 @@ export default function Index (): JSX.Element {
   return (
     <PageLayout
       title={t?.('page_home.title', { name: 'TODO' }) ?? ''}
-      menu={<MainMenu activeItem={'home'}/>}
+      menu={<IndexPageMenu activeItem={'home'}/>}
       mainMenuActiveItem={'home'}
     >
       HOME CONTENT!!!
