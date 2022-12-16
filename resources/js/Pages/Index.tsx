@@ -11,12 +11,12 @@ export default function Index (): JSX.Element {
 
   return (
     <div className={'w-full flex flex-row flex-nowrap gap-x-7'}>
-      <div className={'min-w-fit mt-16 hidden lg:block'}>
+      <div className={'min-w-fit mt-16 hidden md:block'}>
         <MainMenu allowCollapse={true}/>
       </div>
 
       <div className={'w-full flex flex-col flex-nowrap'}>
-        <Collapsible.Root open={open} onOpenChange={setOpen} className={'w-full flex flex-col flex-nowrap items-center lg:items-start block lg:hidden'}>
+        <Collapsible.Root open={open} onOpenChange={setOpen} className={'w-full flex flex-col flex-nowrap items-center md:items-start block md:hidden'}>
           <Collapsible.Trigger className={'flex flex-row flex-nowrap items-center mt-5'}>
             <h1>
               {t?.('page_home.title', { name: 'TODO' })}
@@ -31,11 +31,11 @@ export default function Index (): JSX.Element {
           </Collapsible.Content>
         </Collapsible.Root>
 
-        <h1 className={'mt-5 hidden lg:block'}>
+        <h1 className={'mt-5 hidden md:block'}>
           {t?.('page_home.title', { name: 'TODO' })}
         </h1>
 
-        <hr className={'h-px bg-grey-border border-0 mt-2.5 mb-7 mx-4 lg:mx-0'}/>
+        <hr className={'h-px bg-grey-border border-0 mt-2.5 mb-7 mx-4 md:mx-0'}/>
       </div>
     </div>
   )
