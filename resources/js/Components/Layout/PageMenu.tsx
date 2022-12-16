@@ -6,7 +6,7 @@ import useLocalStorage from 'use-local-storage'
 const CollapsedContext = createContext<boolean>(false)
 
 export default function PageMenu (props: PropsWithChildren<{ allowCollapse?: boolean }>): JSX.Element {
-  const [isCollapsed, setIsCollapsed] = useLocalStorage<boolean>('pageMenu', false)
+  const [isCollapsed, setIsCollapsed] = useLocalStorage<boolean>('pageMenuIsCollapsed', false)
   const toggleIsCollapsed = (): void => setIsCollapsed(!isCollapsed)
   const { allowCollapse } = props
 
