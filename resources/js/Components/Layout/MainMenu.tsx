@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { PropsWithChildren, useContext } from 'react'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 import route from 'ziggy-js'
 import HomeIcon from '../Icons/HomeIcon'
 import { Inertia } from '@inertiajs/inertia'
-import { MenuItem, MenuItemLabel } from './PageMenu'
 import ReservationsIcon from '../Icons/ReservationsIcon'
 
 export type MainMenuActiveItem = null | 'home' | 'reservation'
@@ -38,12 +37,23 @@ export default function MainMenu (props: { activeItem: MainMenuActiveItem, onIte
         return (
           <MenuItem key={item.activeItem} onClick={() => handleItemClick(item.routeName)} isActive={activeItem === item.activeItem}>
             {item.icon}
-            <MenuItemLabel>
+            <div className={'pl-2.5'}>
               {t?.(item.label)}
-            </MenuItemLabel>
+            </div>
           </MenuItem>
         )
       })}
     </>
+  )
+}
+
+export function MenuItem (props: PropsWithChildren<{ isActive?: boolean, onClick: () => void }>): JSX.Element {
+  return (
+    <div
+      onClick={props.onClick}
+      className={`page-menu-item ${(props.isActive ?? false) ? 'active' : ''} w-64 cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full`}
+    >
+      {props.children}
+    </div>
   )
 }
