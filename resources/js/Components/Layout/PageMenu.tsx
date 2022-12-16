@@ -1,17 +1,18 @@
-import React, { createContext, PropsWithChildren, useContext, useState } from 'react'
+import React, { createContext, PropsWithChildren, useContext } from 'react'
 import SwipeLeft from '../Icons/SwipeLeft'
 import SwipeRight from '../Icons/SwipeRight'
+import useLocalStorage from 'use-local-storage'
 
 const CollapsedContext = createContext<boolean>(false)
 
 export default function PageMenu (props: PropsWithChildren<{ allowCollapse?: boolean }>): JSX.Element {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
+  const [isCollapsed, setIsCollapsed] = useLocalStorage<boolean>('pageMenu', false)
   const toggleIsCollapsed = (): void => setIsCollapsed(!isCollapsed)
   const { allowCollapse } = props
 
   return (
     <>
-      <CollapsedContext.Provider value={isCollapsed}>
+      <CollapsedContext.Provider value={(allowCollapse ?? false) && isCollapsed}>
           {props.children}
       </CollapsedContext.Provider>
 
