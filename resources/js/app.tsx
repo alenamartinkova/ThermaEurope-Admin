@@ -7,7 +7,7 @@ import { createRoot } from 'react-dom/client'
 import { InertiaProgress } from '@inertiajs/progress'
 import { LaravelReactI18nProvider } from 'laravel-react-i18n'
 import { SharedProps } from './Interfaces/SharedProps'
-import Layout from './Components/Layout'
+import Layout from './Components/Layout/Layout'
 import { ReactNode } from 'react'
 
 createInertiaApp<SharedProps>({

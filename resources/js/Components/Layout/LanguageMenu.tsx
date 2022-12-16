@@ -3,7 +3,7 @@ import * as Select from '@radix-ui/react-select'
 import { Inertia, Page } from '@inertiajs/inertia'
 import route from 'ziggy-js'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
-import { SharedProps } from '../Interfaces/SharedProps'
+import { SharedProps } from '../../Interfaces/SharedProps'
 import { usePage } from '@inertiajs/inertia-react'
 
 export default function LanguageMenu (): JSX.Element {

@@ -1,13 +1,13 @@
 import React from 'react'
 import * as Avatar from '@radix-ui/react-avatar'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import AvatarPlaceholder from './Icons/AvatarPlaceholder'
-import LogoutIcon from './Icons/LogoutIcon'
+import AvatarPlaceholder from '../Icons/AvatarPlaceholder'
+import LogoutIcon from '../Icons/LogoutIcon'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 import route from 'ziggy-js'
 import { Inertia, Page } from '@inertiajs/inertia'
 import { usePage } from '@inertiajs/inertia-react'
-import { SharedProps } from '../Interfaces/SharedProps'
+import { SharedProps } from '../../Interfaces/SharedProps'
 
 export default function AccountMenu (): JSX.Element {
   const { t } = useLaravelReactI18n()

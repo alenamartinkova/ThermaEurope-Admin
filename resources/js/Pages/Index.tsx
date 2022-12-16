@@ -1,18 +1,27 @@
-import React from 'react'
-import MainMenu from '../Components/MainMenu'
+import React, { useEffect } from 'react'
+import PageMenu from '../Components/Layout/PageMenu'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import ArrowUp from '../Components/Icons/ArrowUp'
 import ArrowDown from '../Components/Icons/ArrowDown'
+import MainMenu from '../Components/Layout/MainMenu'
+import { useActiveItemUpdate } from '../Providers/OffCanvasContextProvider'
 
 export default function Index (): JSX.Element {
   const { t } = useLaravelReactI18n()
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
+  const setOffCanvasActiveItem = useActiveItemUpdate()
+
+  useEffect(() => {
+    setOffCanvasActiveItem('home')
+  }, [])
 
   return (
     <div className={'w-full flex flex-row flex-nowrap gap-x-7'}>
       <div className={'min-w-fit mt-16 hidden md:block'}>
-        <MainMenu allowCollapse={true}/>
+        <PageMenu allowCollapse={true}>
+          <MainMenu activeItem={'home'}/>
+        </PageMenu>
       </div>
 
       <div className={'w-full flex flex-col flex-nowrap'}>
@@ -27,7 +36,9 @@ export default function Index (): JSX.Element {
           </Collapsible.Trigger>
 
           <Collapsible.Content className={'w-full mt-2.5'}>
-            <MainMenu/>
+            <PageMenu>
+              <MainMenu activeItem={'home'}/>
+            </PageMenu>
           </Collapsible.Content>
         </Collapsible.Root>
 

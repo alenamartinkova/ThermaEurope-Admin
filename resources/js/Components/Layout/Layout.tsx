@@ -4,10 +4,11 @@ import route from 'ziggy-js'
 import LanguageMenu from './LanguageMenu'
 import OffCanvas from './OffCanvas'
 import AccountMenu from './AccountMenu'
+import OffCanvasContextProvider from '../../Providers/OffCanvasContextProvider'
 
 export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
   return (
-    <>
+    <OffCanvasContextProvider>
       <header className={'bg-white flex flex-row flex-nowrap justify-between items-center fixed top-0 w-screen h-15 sm:h-17'}>
         <div className={'w-full mx-5 flex flex-row flex-nowrap justify-between items-center'}>
           <div className={'flex flex-row flex-nowrap items-center gap-x-3.5'}>
@@ -33,6 +34,6 @@ export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
       <div className={'py-15 sm:py-17'}>
         <article>{props.children}</article>
       </div>
-    </>
+    </OffCanvasContextProvider>
   )
 }

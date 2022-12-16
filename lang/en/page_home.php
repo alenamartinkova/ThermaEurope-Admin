@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'title' => 'Welcome, :name'
+    'title' => 'Welcome, :name',
 ];
