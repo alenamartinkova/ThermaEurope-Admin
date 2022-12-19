@@ -3,6 +3,7 @@
 return [
     'account_menu' => [
         'logout' => 'Log out',
+        'preferences' => 'Preferences',
     ],
     'language_menu' => [
         'title' => 'Choose your language',

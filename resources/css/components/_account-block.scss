@@ -1,0 +1,11 @@
+.account-block {
+  box-shadow: 0 1px 3px 1px rgb(0 0 0 / 10%);
+
+  label {
+    display: block;
+  }
+
+  .grey-text {
+    color: theme('colors.grey-text');
+  }
+}

@@ -25,6 +25,8 @@ module.exports = {
       colors: {
         black: '#333',
         'blue-active': '#00BACC',
+        cyan: '#C6EAED',
+        'dark-cyan': '#298492',
         'cyan-light': '#E5F6F8',
         'error-red': '#EA0215',
         'gray-light': '#dbdbdb',

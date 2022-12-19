@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReservationController;
@@ -35,4 +36,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Reservations
     Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation.index');
+
+    // Account - Preferences
+    Route::get('/preferences', [AccountController::class, 'preferences'])->name('account.preferences');
 });
