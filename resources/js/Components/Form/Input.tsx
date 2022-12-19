@@ -1,4 +1,5 @@
 import React from 'react'
+import ValidationError from './ValidationError'
 
 interface InputProps {
   id: string
@@ -22,7 +23,7 @@ export default function Input (props: InputProps): JSX.Element {
         value={value}
         onChange={onChange}
       />
-      {error !== undefined && <div className={'text-error-red pt-1'}>{error}</div>}
+      <ValidationError error={error}/>
     </div>
   )
 }

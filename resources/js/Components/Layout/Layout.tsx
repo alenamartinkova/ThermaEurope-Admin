@@ -5,8 +5,12 @@ import LanguageMenu from './LanguageMenu'
 import OffCanvas from './OffCanvas'
 import AccountMenu from './AccountMenu'
 import OffCanvasContextProvider from '../../Providers/OffCanvasContextProvider'
+import { useLaravelReactI18n } from 'laravel-react-i18n'
+import ReactMarkdown from 'react-markdown'
 
 export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
+  const { t } = useLaravelReactI18n()
+
   return (
     <OffCanvasContextProvider>
       <header className={'bg-white flex flex-row flex-nowrap justify-between items-center fixed top-0 w-screen h-15 sm:h-17'}>
@@ -31,8 +35,14 @@ export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
         </div>
       </header>
 
-      <div className={'py-15 sm:py-17'}>
+      <div className={'flex flex-col flex-nowrap justify-between items-stretch pt-15 sm:pt-17 h-screen'}>
         <article>{props.children}</article>
+
+        <div className={'w-full flex flex-col items-center justify-center pt-2.5 pb-3.5'}>
+          <div className={'text-center'}><ReactMarkdown>{t?.('layout.footer.line_1') ?? ''}</ReactMarkdown></div>
+          <div className={'text-center'}><ReactMarkdown>{t?.('layout.footer.line_2') ?? ''}</ReactMarkdown></div>
+          <div className={'text-center'}><ReactMarkdown>{t?.('layout.footer.line_3') ?? ''}</ReactMarkdown></div>
+        </div>
       </div>
     </OffCanvasContextProvider>
   )

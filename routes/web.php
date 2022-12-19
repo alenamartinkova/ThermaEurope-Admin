@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgottenPasswordController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +27,14 @@ Route::group([], function () {
     // Route for logout
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+    // Forgotten Password
+    Route::get('/forgotten-password', [ForgottenPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::get('new-password/{token?}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::get('password-changed', [ResetPasswordController::class, 'passwordChanged'])->name('password.changed');
+    Route::post('/forgotten-password', [ForgottenPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+    // Change system locale
     Route::get('locale/{language}', [LocaleController::class, 'setLanguage'])->name('setLanguage');
 });
 
