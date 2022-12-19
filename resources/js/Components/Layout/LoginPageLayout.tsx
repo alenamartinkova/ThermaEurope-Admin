@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 
-export default function LoginPageLayout (props: PropsWithChildren<{ title: string, text: string }>): JSX.Element {
+export default function LoginPageLayout (props: PropsWithChildren<{ title: JSX.Element, text: JSX.Element }>): JSX.Element {
   const { title, text, children } = props
 
   return (

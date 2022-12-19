@@ -12,7 +12,7 @@ class ResetPasswordController extends Controller
 {
     use ResetsPasswords;
 
-    private string $redirectTo;
+    protected string $redirectTo;
 
     public function __construct()
     {
@@ -21,7 +21,11 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request): Response
     {
-        $token = $request->route()->parameter('token');
+        $token = '';
+
+        if ($request->route() !== null) {
+            $token = $request->route()->parameter('token');
+        }
 
         return Inertia::render('NewPassword', ['token' => $token, 'email' => $request->email]);
     }

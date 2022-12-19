@@ -28,13 +28,19 @@ class ForgottenPasswordController extends Controller
 
     /**
      * @param  Request  $request
-     * @param $response
+     * @param  string  $response
      * @return JsonResponse|RedirectResponse
      */
-    protected function sendResetLinkResponse(Request $request, $response): JsonResponse|RedirectResponse
+    protected function sendResetLinkResponse(Request $request, string $response): JsonResponse|RedirectResponse
     {
+        $email = '';
+
+        if (is_string($request->get('email'))) {
+            $email = $request->get('email');
+        }
+
         return $request->wantsJson()
             ? new JsonResponse(['message' => trans($response)], 200)
-            : back()->with('message', trans($response, ['email' => $request->get('email')]));
+            : back()->with('message', trans($response, ['email' => $email]));
     }
 }

@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import { useLaravelReactI18n } from 'laravel-react-i18n'
 import { usePage } from '@inertiajs/inertia-react'
 import HomeClose from '../Icons/HomeClose'
 import { Page } from '@inertiajs/inertia'
 import { SharedProps } from '../../Interfaces/SharedProps'
 import MainMenu from './MainMenu'
 import { useActiveItem } from '../../Providers/OffCanvasContextProvider'
+import { t } from '../../Libraries/Translate'
 
 export default function OffCanvas (): JSX.Element {
-  const { t } = useLaravelReactI18n()
   const { user } = usePage<Page<SharedProps>>().props
   const [isOpen, setIsOpen] = useState(false)
   const toggleIsOpen = (): void => setIsOpen(!isOpen)
@@ -21,7 +20,7 @@ export default function OffCanvas (): JSX.Element {
           {/* Trigger */}
           <button onClick={() => toggleIsOpen()}
                   className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25 hover:bg-gray-hover">
-            <img className="w-5" src="/images/layout/main-menu-hamburger.svg" alt={t?.('layout.main_menu')}/>
+            <img className="w-5" src="/images/layout/main-menu-hamburger.svg" alt={t('layout.main_menu')}/>
           </button>
 
           {/* Menu content */}

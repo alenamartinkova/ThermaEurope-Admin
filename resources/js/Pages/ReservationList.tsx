@@ -12,7 +12,7 @@ export default function ReservationList (): JSX.Element {
 
   return (
     <PageLayout
-      title={'Reservations'}
+      title={<>Reservations</>}
       menu={<IndexPageMenu activeItem={'reservation'}/>}
       mainMenuActiveItem={'reservation'}
     >
