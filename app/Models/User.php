@@ -8,9 +8,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
-/**
- * @property string $communication_lang
- */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities;

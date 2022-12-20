@@ -36,6 +36,19 @@ export default function AccountMenu (): JSX.Element {
 
             <DropdownMenu.Content align={'end'} className="content sm:mt-1 bg-white px-2.5 py-5 left-0 sm:left-auto right-0 sm:right-5 top-15 sm:top-15 w-full sm:w-auto sm:rounded-10 py-2.5 px-2 sm:px-2.5 border-t sm:border-0 border-grey-input">
               <div className={'w-full sm:w-64 min-w-max'}>
+                <DropdownMenu.Item className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
+                  TODO
+                </DropdownMenu.Item>
+
+                <hr className={'mt-2 mb-2'}/>
+
+                <DropdownMenu.Item onSelect={() => handleLink('account.personal_information')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
+                  <div className={'item-icon w-5 h-5'}>
+                    <HomeAccount/>
+                  </div>
+                  <div>{t?.('layout.account_menu.personal_information')}</div>
+                </DropdownMenu.Item>
+
                 <DropdownMenu.Item onSelect={() => handleLink('account.preferences')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
@@ -43,7 +56,14 @@ export default function AccountMenu (): JSX.Element {
                   <div>{t?.('layout.account_menu.preferences')}</div>
                 </DropdownMenu.Item>
 
-                <hr className={'mt-1 mb-1'}/>
+                <DropdownMenu.Item onSelect={() => handleLink('account.security')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
+                  <div className={'item-icon w-5 h-5'}>
+                    <HomeAccount/>
+                  </div>
+                  <div>{t?.('layout.account_menu.security')}</div>
+                </DropdownMenu.Item>
+
+                <hr className={'mt-2 mb-2'}/>
 
                 <DropdownMenu.Item onSelect={() => handleLink('logout')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
                   <div className={'item-icon w-5 h-5'}>

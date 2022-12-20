@@ -7,7 +7,7 @@ export default function AccountBlock (props: { title: string, showContent: React
   const { t } = useLaravelReactI18n()
 
   return (
-    <div className={'account-block py-7 px-5 rounded-10 max-w-[55rem] md:mr-8 mx-4 md:ml-0 mb-10'}>
+    <div className={'account-block py-7 px-5 rounded-10 max-w-[55rem] md:mr-8 mx-4 md:ml-0 mb-7'}>
       <p className={'font-medium mb-3.5'}>{title}</p>
 
       {!open

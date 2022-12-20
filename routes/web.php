@@ -39,4 +39,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Account - Preferences
     Route::get('/preferences', [AccountController::class, 'preferences'])->name('account.preferences');
+    // Account - Personal information
+    Route::get('/personal-information', [AccountController::class, 'personalInformation'])->name('account.personal_information');
+    // Account - Security
+    Route::get('/security', [AccountController::class, 'security'])->name('account.security');
 });
