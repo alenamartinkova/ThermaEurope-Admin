@@ -32,7 +32,7 @@ export default function NewPassword (): JSX.Element {
   }
 
   return (
-    <LoginPageLayout title={<Translate value={'pageLogin.forgot_password'}/>} text={<Translate value={'pageLogin.forgot_password_text'}/>}>
+    <LoginPageLayout title={<Translate value={'pageLogin.new_password'}/>} text={<Translate value={'pageLogin.new_password_text'}/>}>
       <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'}>
         <div>
           <ValidationError error={errors.email}/>
@@ -41,7 +41,7 @@ export default function NewPassword (): JSX.Element {
             <Input
               id="password"
               type="password"
-              placeholder={t?.('pageLogin.reset_form.new_password')}
+              placeholder={t?.('pageLogin.new_password')}
               value={values.password}
               onChange={handleChange}
               error={errors.password}
@@ -52,7 +52,7 @@ export default function NewPassword (): JSX.Element {
             <Input
               id="password_confirmation"
               type="password"
-              placeholder={t?.('pageLogin.reset_form.new_password_retype')}
+              placeholder={t?.('pageLogin.confirm_password')}
               value={values.password_confirmation}
               onChange={handleChange}
               error={errors.password_confirmation}
@@ -60,7 +60,13 @@ export default function NewPassword (): JSX.Element {
           </div>
         </div>
 
-        <button type="submit" className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
+        <button className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
+          <Translate value={'pageLogin.generate_password'} />
+        </button>
+
+        <hr className={'h-px bg-grey-border border-0 my-5 mx-4 md:mx-0'}/>
+
+        <button type="submit" className={'bg-green-active text-white w-full py-3 rounded-10 text-base'}>
           <Translate value={'pageLogin.send_link'} />
         </button>
       </form>

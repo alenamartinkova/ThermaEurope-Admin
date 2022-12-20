@@ -17,4 +17,9 @@ return [
     'back' => 'Back',
     'customer_service' => 'Customer Service',
     'customer_service_url' => 'https://spanamo.com/en/customer-service',
+    'new_password' => 'New password',
+    'new_password_text' => 'Your password must be a minimum of 10 characters and include at least one uppercase letter, one lowercase letter and one number.',
+    'confirm_password' => 'Confirm Password',
+    'generate_password' => 'Generate password',
+    'set_new_password' => 'Set new password',
 ];
