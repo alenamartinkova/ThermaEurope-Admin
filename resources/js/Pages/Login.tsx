@@ -3,7 +3,7 @@ import LoginForm from '../Components/LoginForm'
 import { Link } from '@inertiajs/inertia-react'
 import route from 'ziggy-js'
 import LoginPageLayout from '../Components/Layout/LoginPageLayout'
-import Translate from '../Libraries/Translate'
+import Translate from '../Components/Translate'
 
 export default function Login (): JSX.Element {
   return (

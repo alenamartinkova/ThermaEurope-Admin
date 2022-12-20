@@ -5,7 +5,7 @@ import LanguageMenu from './LanguageMenu'
 import OffCanvas from './OffCanvas'
 import AccountMenu from './AccountMenu'
 import OffCanvasContextProvider from '../../Providers/OffCanvasContextProvider'
-import Translate from '../../Libraries/Translate'
+import Translate from '../Translate'
 
 export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
   return (

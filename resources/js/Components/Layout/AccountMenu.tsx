@@ -7,7 +7,7 @@ import route from 'ziggy-js'
 import { Inertia, Page } from '@inertiajs/inertia'
 import { usePage } from '@inertiajs/inertia-react'
 import { SharedProps } from '../../Interfaces/SharedProps'
-import Translate from '../../Libraries/Translate'
+import Translate from '../Translate'
 
 export default function AccountMenu (): JSX.Element {
   const { user } = usePage<Page<SharedProps>>().props

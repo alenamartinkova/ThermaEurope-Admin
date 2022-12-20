@@ -3,7 +3,7 @@ import route from 'ziggy-js'
 import HomeIcon from '../Icons/HomeIcon'
 import { Inertia } from '@inertiajs/inertia'
 import ReservationsIcon from '../Icons/ReservationsIcon'
-import Translate from '../../Libraries/Translate'
+import Translate from '../Translate'
 
 export type MainMenuActiveItem = null | 'home' | 'reservation'
 

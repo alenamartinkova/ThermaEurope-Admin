@@ -1,7 +1,7 @@
 import React from 'react'
 import PageLayout from '../Components/Layout/PageLayout'
 import IndexPageMenu from '../Components/IndexPageMenu'
-import Translate from '../Libraries/Translate'
+import Translate from '../Components/Translate'
 
 export default function Index (): JSX.Element {
   return (

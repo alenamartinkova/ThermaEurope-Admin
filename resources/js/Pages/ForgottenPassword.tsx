@@ -5,7 +5,7 @@ import { usePage } from '@inertiajs/inertia-react'
 import { Page } from '@inertiajs/inertia'
 import { SharedProps } from '../Interfaces/SharedProps'
 import ForgottenPasswordMessage from '../Components/ForgottenPasswordMessage'
-import Translate from '../Libraries/Translate'
+import Translate from '../Components/Translate'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 
 export default function ForgottenPassword (): JSX.Element {

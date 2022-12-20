@@ -4,7 +4,7 @@ import { usePage } from '@inertiajs/inertia-react'
 import { Inertia, Page } from '@inertiajs/inertia'
 import { SharedProps } from '../Interfaces/SharedProps'
 import route from 'ziggy-js'
-import Translate from '../Libraries/Translate'
+import Translate from './Translate'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 
 export default function ForgottenPasswordForm (): JSX.Element {

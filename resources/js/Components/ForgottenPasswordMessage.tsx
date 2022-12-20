@@ -2,7 +2,7 @@ import React from 'react'
 import route from 'ziggy-js'
 import ReactMarkdown from 'react-markdown'
 import { Inertia } from '@inertiajs/inertia'
-import Translate from '../Libraries/Translate'
+import Translate from './Translate'
 
 export default function ForgottenPasswordMessage (props: { message: string }): JSX.Element {
   const { message } = props

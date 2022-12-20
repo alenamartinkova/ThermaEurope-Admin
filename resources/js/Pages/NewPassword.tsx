@@ -6,7 +6,7 @@ import { SharedProps } from '../Interfaces/SharedProps'
 import Input from '../Components/Form/Input'
 import route from 'ziggy-js'
 import ValidationError from '../Components/Form/ValidationError'
-import Translate from '../Libraries/Translate'
+import Translate from '../Components/Translate'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 
 export default function NewPassword (): JSX.Element {

@@ -5,7 +5,7 @@ import route from 'ziggy-js'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 import { SharedProps } from '../../Interfaces/SharedProps'
 import { usePage } from '@inertiajs/inertia-react'
-import Translate from '../../Libraries/Translate'
+import Translate from '../Translate'
 
 export default function LanguageMenu (): JSX.Element {
   const { t } = useLaravelReactI18n()
