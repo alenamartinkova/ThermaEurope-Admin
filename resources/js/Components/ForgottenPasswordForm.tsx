@@ -4,9 +4,11 @@ import { usePage } from '@inertiajs/inertia-react'
 import { Inertia, Page } from '@inertiajs/inertia'
 import { SharedProps } from '../Interfaces/SharedProps'
 import route from 'ziggy-js'
-import { __, t } from '../Libraries/Translate'
+import Translate from '../Libraries/Translate'
+import { useLaravelReactI18n } from 'laravel-react-i18n'
 
 export default function ForgottenPasswordForm (): JSX.Element {
+  const { t } = useLaravelReactI18n()
   const { errors } = usePage<Page<SharedProps>>().props
   const [email, setEmail] = useState('')
 
@@ -26,7 +28,7 @@ export default function ForgottenPasswordForm (): JSX.Element {
           <Input
             id="email"
             type="text"
-            placeholder={t('pageLogin.login_form.email_placeholder')}
+            placeholder={t?.('pageLogin.login_form.email_placeholder')}
             value={email}
             onChange={handleChange}
             error={errors.email}
@@ -35,7 +37,7 @@ export default function ForgottenPasswordForm (): JSX.Element {
       </div>
 
       <button type="submit" className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
-        {__('pageLogin.send_link')}
+        <Translate value='pageLogin.send_link'/>
       </button>
     </form>
   )

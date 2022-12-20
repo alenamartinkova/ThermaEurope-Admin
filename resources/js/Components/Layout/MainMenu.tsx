@@ -3,7 +3,7 @@ import route from 'ziggy-js'
 import HomeIcon from '../Icons/HomeIcon'
 import { Inertia } from '@inertiajs/inertia'
 import ReservationsIcon from '../Icons/ReservationsIcon'
-import { __ } from '../../Libraries/Translate'
+import Translate from '../../Libraries/Translate'
 
 export type MainMenuActiveItem = null | 'home' | 'reservation'
 
@@ -37,7 +37,7 @@ export default function MainMenu (props: { activeItem: MainMenuActiveItem, onIte
           <MenuItem key={item.activeItem} onClick={() => handleItemClick(item.routeName)} isActive={activeItem === item.activeItem}>
             {item.icon}
             <div className={'pl-2.5'}>
-              {__(item.label)}
+              <Translate value={item.label} />
             </div>
           </MenuItem>
         )

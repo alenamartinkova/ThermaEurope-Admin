@@ -7,7 +7,7 @@ import route from 'ziggy-js'
 import { Inertia, Page } from '@inertiajs/inertia'
 import { usePage } from '@inertiajs/inertia-react'
 import { SharedProps } from '../../Interfaces/SharedProps'
-import { __ } from '../../Libraries/Translate'
+import Translate from '../../Libraries/Translate'
 
 export default function AccountMenu (): JSX.Element {
   const { user } = usePage<Page<SharedProps>>().props
@@ -38,7 +38,9 @@ export default function AccountMenu (): JSX.Element {
                   <div className={'item-icon w-5 h-5'}>
                     <LogoutIcon/>
                   </div>
-                  <div>{__('layout.account_menu.logout')}</div>
+                  <div>
+                    <Translate value={'layout.account_menu.logout'}/>
+                  </div>
                 </DropdownMenu.Item>
               </div>
             </DropdownMenu.Content>

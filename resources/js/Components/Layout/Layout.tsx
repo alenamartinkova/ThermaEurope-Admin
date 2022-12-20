@@ -5,7 +5,7 @@ import LanguageMenu from './LanguageMenu'
 import OffCanvas from './OffCanvas'
 import AccountMenu from './AccountMenu'
 import OffCanvasContextProvider from '../../Providers/OffCanvasContextProvider'
-import { __ } from '../../Libraries/Translate'
+import Translate from '../../Libraries/Translate'
 
 export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
   return (
@@ -35,10 +35,10 @@ export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
       <div className={'flex flex-col flex-nowrap justify-between items-stretch pt-15 sm:pt-17 h-screen'}>
         <article>{props.children}</article>
 
-        <div className={'w-full flex flex-col items-center justify-center pt-2.5 pb-3.5'}>
-          <div className={'text-center'}>{__('layout.footer.line_1') ?? ''}</div>
-          <div className={'text-center'}>{__('layout.footer.line_2') ?? ''}</div>
-          <div className={'text-center'}>{__('layout.footer.line_3') ?? ''}</div>
+        <div className={'w-full flex flex-col items-center justify-center pt-2.5 pb-3.5 px-7 sm:px-24'}>
+          <div className={'text-center'}><Translate value={'layout.footer.line_1'}/></div>
+          <div className={'text-center'}><Translate value={'layout.footer.line_2'}/></div>
+          <div className={'text-center'}><Translate value={'layout.footer.line_3'}/></div>
         </div>
       </div>
     </OffCanvasContextProvider>

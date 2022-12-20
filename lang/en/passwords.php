@@ -14,7 +14,7 @@ return [
     */
 
     'reset' => 'Your password has been reset!',
-    'sent' => 'We\'ve just emailed instructions and a link to reset your password to `:email`. It might take a few minutes to arrive.',
+    'sent' => 'We’ve just emailed instructions and a reset password link to `:email`. It might take a few minutes to arrive.',
     'throttled' => 'Please wait before retrying.',
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that email address.",

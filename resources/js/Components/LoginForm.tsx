@@ -4,9 +4,11 @@ import { usePage } from '@inertiajs/inertia-react'
 import { Inertia, Page } from '@inertiajs/inertia'
 import { SharedProps } from '../Interfaces/SharedProps'
 import route from 'ziggy-js'
-import { __, t } from '../Libraries/Translate'
+import Translate from '../Libraries/Translate'
+import { useLaravelReactI18n } from 'laravel-react-i18n'
 
 export default function LoginForm (): JSX.Element {
+  const { t } = useLaravelReactI18n()
   const { errors } = usePage<Page<SharedProps>>().props
   const [values, setValues] = useState({
     email: '',
@@ -34,7 +36,7 @@ export default function LoginForm (): JSX.Element {
           <Input
             id="email"
             type="text"
-            placeholder={t('pageLogin.login_form.email_placeholder')}
+            placeholder={t?.('pageLogin.login_form.email_placeholder')}
             value={values.email}
             onChange={handleChange}
             error={errors.email}
@@ -45,7 +47,7 @@ export default function LoginForm (): JSX.Element {
           <Input
             id="password"
             type="password"
-            placeholder={t('pageLogin.login_form.password_placeholder')}
+            placeholder={t?.('pageLogin.login_form.password_placeholder')}
             value={values.password}
             onChange={handleChange}
             error={errors.password}
@@ -54,7 +56,7 @@ export default function LoginForm (): JSX.Element {
       </div>
 
       <button type="submit" className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
-        {__('pageLogin.login_form.log_in')}
+        <Translate value={'pageLogin.login_form.log_in'} />
       </button>
     </form>
   )

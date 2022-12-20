@@ -6,9 +6,11 @@ import { SharedProps } from '../Interfaces/SharedProps'
 import Input from '../Components/Form/Input'
 import route from 'ziggy-js'
 import ValidationError from '../Components/Form/ValidationError'
-import { __, t } from '../Libraries/Translate'
+import Translate from '../Libraries/Translate'
+import { useLaravelReactI18n } from 'laravel-react-i18n'
 
 export default function NewPassword (): JSX.Element {
+  const { t } = useLaravelReactI18n()
   const { errors, email, token } = usePage<Page<SharedProps & { email: string, token: string }>>().props
   const [values, setValues] = useState({
     password: '',
@@ -30,7 +32,7 @@ export default function NewPassword (): JSX.Element {
   }
 
   return (
-    <LoginPageLayout title={__('pageLogin.forgot_password')} text={__('pageLogin.forgot_password_text')}>
+    <LoginPageLayout title={<Translate value={'pageLogin.forgot_password'}/>} text={<Translate value={'pageLogin.forgot_password_text'}/>}>
       <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'}>
         <div>
           <ValidationError error={errors.email}/>
@@ -39,7 +41,7 @@ export default function NewPassword (): JSX.Element {
             <Input
               id="password"
               type="password"
-              placeholder={t('pageLogin.reset_form.new_password')}
+              placeholder={t?.('pageLogin.reset_form.new_password')}
               value={values.password}
               onChange={handleChange}
               error={errors.password}
@@ -50,7 +52,7 @@ export default function NewPassword (): JSX.Element {
             <Input
               id="password_confirmation"
               type="password"
-              placeholder={t('pageLogin.reset_form.new_password_retype')}
+              placeholder={t?.('pageLogin.reset_form.new_password_retype')}
               value={values.password_confirmation}
               onChange={handleChange}
               error={errors.password_confirmation}
@@ -59,7 +61,7 @@ export default function NewPassword (): JSX.Element {
         </div>
 
         <button type="submit" className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
-          {__('pageLogin.send_link')}
+          <Translate value={'pageLogin.send_link'} />
         </button>
       </form>
     </LoginPageLayout>
