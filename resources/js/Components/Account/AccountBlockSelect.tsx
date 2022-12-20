@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Select from '@radix-ui/react-select'
 
-export default function CommunicationLanguageSelect (): JSX.Element {
+export default function AccountBlockSelect (): JSX.Element {
   return (
     <div className={'mb-2'}>
       <label className={'grey-text mb-1'}>Label</label>

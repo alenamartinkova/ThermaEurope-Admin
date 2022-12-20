@@ -43,6 +43,8 @@ export default function AccountMenu (): JSX.Element {
                   <div>{t?.('layout.account_menu.preferences')}</div>
                 </DropdownMenu.Item>
 
+                <hr className={'mt-1 mb-1'}/>
+
                 <DropdownMenu.Item onSelect={() => handleLink('logout')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
                   <div className={'item-icon w-5 h-5'}>
                     <LogoutIcon/>
