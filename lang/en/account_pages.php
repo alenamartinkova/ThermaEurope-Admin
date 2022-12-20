@@ -11,6 +11,16 @@ return [
         'label' => 'Choose your currency',
         'text' => 'Choose your favorite currency',
     ],
+    'personal_information' => [
+        'title' => 'Personal information',
+    ],
+    'preferences' => [
+        'title' => 'Preferences',
+    ],
+    'security' => [
+        'title' => 'Security',
+    ],
+    'account' => 'Account',
     'edit' => 'Edit',
     'cancel' => 'Cancel',
     'save' => 'Save',

@@ -11,6 +11,7 @@ export default function Index (): JSX.Element {
       title={t?.('page_home.title', { name: 'TODO' }) ?? ''}
       menu={<IndexPageMenu activeItem={'home'}/>}
       mainMenuActiveItem={'home'}
+      hasHeading={false}
     >
       HOME CONTENT!!!
     </PageLayout>

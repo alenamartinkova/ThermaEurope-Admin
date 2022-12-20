@@ -1,13 +1,14 @@
 import React from 'react'
 import PageLayout from '../Components/Layout/PageLayout'
-import IndexPageMenu from '../Components/IndexPageMenu'
+import AccountPageMenu from '../Components/Account/AccountPageMenu'
 
 export default function PersonalInformation (): JSX.Element {
   return (
     <PageLayout
       title={'Personal Information'}
-      menu={<IndexPageMenu activeItem={null}/>}
+      menu={<AccountPageMenu activeItem={'personal-information'}/>}
       mainMenuActiveItem={null}
+      hasHeading={true}
     >
       Personal Information
     </PageLayout>

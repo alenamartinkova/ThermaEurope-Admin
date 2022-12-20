@@ -1,13 +1,14 @@
 import React from 'react'
 import PageLayout from '../Components/Layout/PageLayout'
-import IndexPageMenu from '../Components/IndexPageMenu'
+import AccountPageMenu from '../Components/Account/AccountPageMenu'
 
 export default function Security (): JSX.Element {
   return (
     <PageLayout
       title={'Security'}
-      menu={<IndexPageMenu activeItem={null}/>}
+      menu={<AccountPageMenu activeItem={'security'}/>}
       mainMenuActiveItem={null}
+      hasHeading={true}
     >
       Security
     </PageLayout>

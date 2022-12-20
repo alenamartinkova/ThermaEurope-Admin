@@ -6,8 +6,8 @@ import ArrowDown from '../Icons/ArrowDown'
 import ArrowUp from '../Icons/ArrowUp'
 import { useActiveItemUpdate } from '../../Providers/OffCanvasContextProvider'
 
-export default function PageLayout (props: PropsWithChildren<{ title: string, menu: React.ReactNode, mainMenuActiveItem: MainMenuActiveItem }>): JSX.Element {
-  const { title, menu, mainMenuActiveItem } = props
+export default function PageLayout (props: PropsWithChildren<{ title: string, menu: React.ReactNode, mainMenuActiveItem: MainMenuActiveItem, hasHeading: boolean }>): JSX.Element {
+  const { title, menu, mainMenuActiveItem, hasHeading } = props
   const [open, setOpen] = React.useState(false)
   const setOffCanvasActiveItem = useActiveItemUpdate()
 
@@ -17,7 +17,7 @@ export default function PageLayout (props: PropsWithChildren<{ title: string, me
 
   return (
     <div className={'w-full flex flex-row flex-nowrap gap-x-7'}>
-      <div className={'min-w-fit mt-16 hidden md:block'}>
+      <div className={`min-w-fit ${hasHeading ? 'mt-4' : 'mt-16'} hidden md:block`}>
         <PageMenu allowCollapse={true}>
           {menu}
         </PageMenu>

@@ -7,14 +7,30 @@
 }
 
 .main-menu-item {
+  color: theme('colors.grey-text');
+  font-weight: 500;
+
   &:hover {
     background-color: theme('colors.gray-hover');
+  }
+
+  svg {
+    fill: theme('colors.grey-text');
   }
 }
 
 .main-menu-item.active {
   background-color: theme('colors.cyan-light');
   color: theme('colors.blue-active');
+
+  svg {
+    fill: theme('colors.blue-active');
+  }
+}
+
+.main-menu-item__heading {
+  color: theme('colors.blue-active');
+  font-weight: 500;
 
   svg {
     fill: theme('colors.blue-active');

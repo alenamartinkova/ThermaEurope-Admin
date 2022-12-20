@@ -50,3 +50,17 @@ export function MenuItemLabel (props: PropsWithChildren<{}>): JSX.Element {
     </>
   )
 }
+
+export function MenuItemHeading (props: PropsWithChildren<{}>): JSX.Element {
+  const isCollapsed = useContext(CollapsedContext)
+
+  return (
+    <>
+      {!isCollapsed &&
+        <div className={`main-menu-item__heading ${isCollapsed ? 'w-14' : 'w-64'} active h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full text-2xl items-center`}>
+          { props.children }
+        </div>
+      }
+    </>
+  )
+}
