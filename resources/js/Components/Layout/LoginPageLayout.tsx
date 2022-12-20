@@ -19,7 +19,7 @@ export default function LoginPageLayout (props: PropsWithChildren<{ title: JSX.E
         </div>
 
         {/* Column Right */}
-        <div className={'grow login-form px-5 py-7 rounded-10 w-[24rem]'}>
+        <div className={'grow bow-shadow px-5 py-7 rounded-10 w-[24rem]'}>
           {children}
         </div>
 

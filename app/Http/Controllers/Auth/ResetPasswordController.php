@@ -23,7 +23,7 @@ class ResetPasswordController extends Controller
     }
 
     /**
-     * @return array
+     * @return array<string, array<int, Password|string>|string>
      */
     protected function rules(): array
     {
@@ -33,13 +33,13 @@ class ResetPasswordController extends Controller
             'password' => [
                 'required',
                 'confirmed',
-                Password::min(self::PASSWORD_MIN_LENGTH)->mixedCase()->letters()->numbers()
+                Password::min(self::PASSWORD_MIN_LENGTH)->mixedCase()->letters()->numbers(),
             ],
         ];
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      * @return Response
      */
     public function showResetForm(Request $request): Response

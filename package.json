@@ -38,6 +38,7 @@
         "@radix-ui/react-select": "^1.1.2",
         "@types/react": "^18.0.25",
         "@vitejs/plugin-react": "^2.2.0",
+        "generate-password-ts": "^1.6.3",
         "lang.js": "^1.1.14",
         "laravel-react-i18n": "^1.0.4",
         "moment": "^2.29.4",

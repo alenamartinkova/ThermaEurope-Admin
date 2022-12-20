@@ -22,4 +22,7 @@ return [
     'confirm_password' => 'Confirm Password',
     'generate_password' => 'Generate password',
     'set_new_password' => 'Set new password',
+    'password_created_successfully' => 'Password created successfully!',
+    'password_created_successfully_text' => 'You will be redirected to your profile.',
+    'redirected_in' => 'You will be redirected in',
 ];

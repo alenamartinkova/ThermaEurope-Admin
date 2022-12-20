@@ -8,10 +8,12 @@ import route from 'ziggy-js'
 import ValidationError from '../Components/Form/ValidationError'
 import Translate from '../Components/Translate'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
+import generator from 'generate-password-ts'
 
 export default function NewPassword (): JSX.Element {
   const { t } = useLaravelReactI18n()
   const { errors, email, token } = usePage<Page<SharedProps & { email: string, token: string }>>().props
+  const [showPassword, setShowPassword] = useState(false)
   const [values, setValues] = useState({
     password: '',
     password_confirmation: ''
@@ -26,6 +28,27 @@ export default function NewPassword (): JSX.Element {
     }))
   }
 
+  function generatePassword (e: React.MouseEvent<HTMLButtonElement>): void {
+    e.preventDefault()
+    let password = ''
+
+    // generator sometimes generate password without number
+    while (!(/\d/).test(password)) {
+      password = generator.generate({
+        length: 10,
+        numbers: true
+      })
+    }
+
+    setValues(values => ({
+      ...values,
+      password,
+      password_confirmation: password
+    }))
+
+    setShowPassword(true)
+  }
+
   function handleSubmit (e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault()
     Inertia.post(route('password.update'), { ...values, email, token })
@@ -35,12 +58,12 @@ export default function NewPassword (): JSX.Element {
     <LoginPageLayout title={<Translate value={'pageLogin.new_password'}/>} text={<Translate value={'pageLogin.new_password_text'}/>}>
       <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'}>
         <div>
-          <ValidationError error={errors.email}/>
+          <ValidationError className={'pb-3.5'} error={errors.email}/>
 
           <div className={'pb-3.5'}>
             <Input
               id="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder={t?.('pageLogin.new_password')}
               value={values.password}
               onChange={handleChange}
@@ -51,7 +74,7 @@ export default function NewPassword (): JSX.Element {
           <div className={'pb-3.5'}>
             <Input
               id="password_confirmation"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder={t?.('pageLogin.confirm_password')}
               value={values.password_confirmation}
               onChange={handleChange}
@@ -60,7 +83,7 @@ export default function NewPassword (): JSX.Element {
           </div>
         </div>
 
-        <button className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
+        <button onClick={generatePassword} className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
           <Translate value={'pageLogin.generate_password'} />
         </button>
 
