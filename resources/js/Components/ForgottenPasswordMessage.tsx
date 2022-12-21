@@ -11,7 +11,12 @@ export default function ForgottenPasswordMessage (props: { message: string }): J
     <>
       <ReactMarkdown className={'text-base'}>{message}</ReactMarkdown>
 
-      <button type="submit" onClick={() => Inertia.visit(route('login'))} className={'bg-blue-active text-white w-full py-3 rounded-10 text-base mt-5'}>
+      <button
+        type="submit"
+        onClick={() => Inertia.visit(route('login'))}
+        className={'bg-blue-active text-white w-full py-3 rounded-10 text-base mt-5'}
+        data-testid="back-to-login-button"
+      >
         <Translate value={'pageLogin.back_to_login'} />
       </button>
     </>

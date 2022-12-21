@@ -8,8 +8,6 @@ use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class CurrencyRepository.
- *
- * @package namespace App\Repositories;
  */
 class LanguageRepository extends BaseRepository
 {
@@ -32,7 +30,7 @@ class LanguageRepository extends BaseRepository
     }
 
     /**
-     * @param string $code
+     * @param  string  $code
      * @return Builder
      */
     public function getLanguageByCode(string $code): Builder

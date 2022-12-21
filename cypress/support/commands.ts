@@ -1,3 +1,13 @@
+/// <reference types="cypress" />
+export {}
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      login(email: string, password: string): Chainable<Element>
+    }
+  }
+}
 
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   let auth = {}
@@ -16,3 +26,15 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
     ...auth
   })
 })
+
+Cypress.Commands.addAll({ login: (email: string, password: string) => {
+  cy.server();
+  cy.route('POST', '**/login').as('postLogin');
+
+  cy.visit('/login')
+  cy.get('#email').clear().type(email)
+  cy.get('#password').clear().type(password)
+  cy.get('[data-testid=login-form]').submit()
+
+  cy.wait('@postLogin')
+}})

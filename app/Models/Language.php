@@ -16,8 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $is_active
  * @property int $is_default
  * @property string $code_with_hyphen
- *
- * @package App\Models
  */
 class Language extends Model
 {

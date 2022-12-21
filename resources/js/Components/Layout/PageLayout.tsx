@@ -25,7 +25,10 @@ export default function PageLayout (props: PropsWithChildren<{ title: JSX.Elemen
 
       <div className={'w-full flex flex-col flex-nowrap'}>
         <Collapsible.Root open={open} onOpenChange={setOpen} className={'w-full flex flex-col flex-nowrap items-center md:items-start block md:hidden'}>
-          <Collapsible.Trigger className={'flex flex-row flex-nowrap items-center mt-5'}>
+          <Collapsible.Trigger
+            className={'flex flex-row flex-nowrap items-center mt-5'}
+            data-testid="page-title-menu-trigger"
+          >
             <h1>
               {title}
             </h1>

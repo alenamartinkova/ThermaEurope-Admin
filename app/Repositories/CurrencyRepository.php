@@ -2,14 +2,12 @@
 
 namespace App\Repositories;
 
+use App\Models\Currency;
 use Illuminate\Database\Eloquent\Builder;
 use Prettus\Repository\Eloquent\BaseRepository;
-use App\Models\Currency;
 
 /**
  * Class CurrencyRepository.
- *
- * @package namespace App\Repositories;
  */
 class CurrencyRepository extends BaseRepository
 {

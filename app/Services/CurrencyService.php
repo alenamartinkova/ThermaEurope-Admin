@@ -11,9 +11,10 @@ class CurrencyService
     private CurrencyRepository $currencyRepository;
 
     /**
-     * @param CurrencyRepository $currencyRepository
+     * @param  CurrencyRepository  $currencyRepository
      */
-    public function __construct(CurrencyRepository $currencyRepository) {
+    public function __construct(CurrencyRepository $currencyRepository)
+    {
         $this->currencyRepository = $currencyRepository;
     }
 

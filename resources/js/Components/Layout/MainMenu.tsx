@@ -34,7 +34,12 @@ export default function MainMenu (props: { activeItem: MainMenuActiveItem, onIte
     <>
       { itemsData.map((item) => {
         return (
-          <MenuItem key={item.activeItem} onClick={() => handleItemClick(item.routeName)} isActive={activeItem === item.activeItem}>
+          <MenuItem
+            key={item.activeItem}
+            onClick={() => handleItemClick(item.routeName)}
+            isActive={activeItem === item.activeItem}
+            testId={item.activeItem}
+          >
             {item.icon}
             <div className={'pl-2.5'}>
               <Translate value={item.label} />
@@ -46,13 +51,14 @@ export default function MainMenu (props: { activeItem: MainMenuActiveItem, onIte
   )
 }
 
-export function MenuItem (props: PropsWithChildren<{ isActive?: boolean, onClick: () => void }>): JSX.Element {
+export function MenuItem (props: PropsWithChildren<{ onClick: () => void, testId: MainMenuActiveItem, isActive?: boolean }>): JSX.Element {
   return (
-    <div
+    <button
       onClick={props.onClick}
-      className={`page-menu-item ${(props.isActive ?? false) ? 'active' : ''} w-64 cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full active:bg-gray-light items-center`}
+      className={`main-menu-item ${(props.isActive ?? false) ? 'active' : ''} w-64 cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full active:bg-gray-light items-center`}
+      data-testid={props.testId}
     >
       {props.children}
-    </div>
+    </button>
   )
 }

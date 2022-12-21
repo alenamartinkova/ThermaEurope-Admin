@@ -4,8 +4,12 @@ export default function ValidationError (props: { error?: string, className?: st
   const classes = props.className
 
   return (
-    <div className={classes}>
-      {props.error !== undefined && <div className={'text-error-red pt-1'}>{props.error}</div>}
-    </div>
+    <>
+      { props.error !== undefined &&
+          <div className={classes}>
+            <div className={'text-error-red pt-1'}>{props.error}</div>
+          </div>
+      }
+    </>
   )
 }

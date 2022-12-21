@@ -6,7 +6,6 @@ use App\Exceptions\NotAuthenticatedException;
 use App\Http\Requests\LanguageUpdateRequest;
 use App\Services\LanguageService;
 use App\Services\UserService;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -19,8 +18,8 @@ class AccountController extends Controller
     private UserService $userService;
 
     /**
-     * @param LanguageService $languageService
-     * @param UserService $userService
+     * @param  LanguageService  $languageService
+     * @param  UserService  $userService
      */
     public function __construct(
         LanguageService $languageService,
@@ -57,10 +56,12 @@ class AccountController extends Controller
     }
 
     /**
-     * @param LanguageUpdateRequest $request
+     * @param  LanguageUpdateRequest  $request
+     *
      * @throws NotAuthenticatedException
      */
-    public function updateAccountLanguage(LanguageUpdateRequest $request) {
+    public function updateAccountLanguage(LanguageUpdateRequest $request)
+    {
         $data = $request->getData();
 
         $this->userService->updateMyCommunicationLanguage($data['communication_lang']);

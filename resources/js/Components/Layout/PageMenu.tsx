@@ -11,29 +11,37 @@ export default function PageMenu (props: PropsWithChildren<{ allowCollapse?: boo
   const { allowCollapse } = props
 
   return (
-    <>
+    <div data-testid="page-menu">
       <CollapsedContext.Provider value={(allowCollapse ?? false) && isCollapsed}>
           {props.children}
       </CollapsedContext.Provider>
 
       {(allowCollapse ?? false) &&
-        <div onClick={toggleIsCollapsed} className={'active:bg-gray-light cursor-pointer w-10 h-10 ml-3.5 mt-6 flex justify-center items-center rounded-full bg-gray-hover'}>
+        <button
+          onClick={toggleIsCollapsed}
+          className={'active:bg-gray-light cursor-pointer w-10 h-10 ml-3.5 mt-6 flex justify-center items-center rounded-full bg-gray-hover'}
+          data-testid="page-menu-toggle-trigger"
+        >
           <div className={'w-5 h-5'}>
             {isCollapsed ? <SwipeRight/> : <SwipeLeft/>}
           </div>
-        </div>
+        </button>
       }
-    </>
+    </div>
   )
 }
 
-export function MenuItem (props: PropsWithChildren<{ isActive?: boolean, onClick: () => void }>): JSX.Element {
+export function MenuItem (props: PropsWithChildren<{ onClick: () => void, testId?: string | null, isActive?: boolean }>): JSX.Element {
   const isCollapsed = useContext(CollapsedContext)
 
   return (
-    <div onClick={props.onClick} className={`main-menu-item ${(props.isActive ?? false) ? 'active' : ''} ${isCollapsed ? 'w-14' : 'w-64'} cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full active:bg-gray-light items-center`}>
+    <button
+      onClick={props.onClick}
+      className={`page-menu-item ${(props.isActive ?? false) ? 'active' : ''} ${isCollapsed ? 'w-14' : 'w-64'} cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full active:bg-gray-light items-center`}
+      data-testid={props.testId}
+    >
       {props.children}
-    </div>
+    </button>
   )
 }
 
@@ -43,7 +51,7 @@ export function MenuItemLabel (props: PropsWithChildren<{}>): JSX.Element {
   return (
     <>
       {!isCollapsed &&
-        <div className={'pl-2.5'}>
+        <div className={'pl-2.5'} data-testid="page-menu-item-label">
           { props.children }
         </div>
       }
@@ -56,7 +64,7 @@ export function MenuItemHeading (props: PropsWithChildren<{}>): JSX.Element {
 
   return (
     <>
-      <div className={`main-menu-item__heading ${isCollapsed ? 'w-14' : 'w-64'} active h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full text-2xl items-center`}>
+      <div className={`page-menu-item__heading ${isCollapsed ? 'w-14' : 'w-64'} active h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full text-2xl items-center`}>
         { props.children }
       </div>
     </>

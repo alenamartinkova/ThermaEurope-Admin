@@ -11,12 +11,11 @@ class LanguageService
     private LanguageRepository $languageRepository;
 
     /**
-     * @param LanguageRepository $languageRepository
+     * @param  LanguageRepository  $languageRepository
      */
     public function __construct(
         LanguageRepository $languageRepository
-    )
-    {
+    ) {
         $this->languageRepository = $languageRepository;
     }
 

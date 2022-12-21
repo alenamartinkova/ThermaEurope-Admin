@@ -12,7 +12,12 @@ export default function IndexPageMenu (props: { activeItem: MainMenuActiveItem }
     <>
       { itemsData.map((item) => {
         return (
-          <MenuItem key={item.activeItem} onClick={() => Inertia.visit(route(item.routeName))} isActive={activeItem === item.activeItem}>
+          <MenuItem
+            key={item.activeItem}
+            onClick={() => Inertia.visit(route(item.routeName))}
+            isActive={activeItem === item.activeItem}
+            testId={item.activeItem}
+          >
             {item.icon}
             <MenuItemLabel>
               <Translate value={item.label}/>

@@ -23,7 +23,7 @@ export default function NewPassword (): JSX.Element {
   return (
     <div className={'w-full flex flex-row flex-nowrap justify-center px-7 sm:px-24'}>
 
-      <div className={'grow flex flex-col flex-nowrap items-center max-w-[39rem]'}>
+      <div className={'grow flex flex-col flex-nowrap items-center max-w-[39rem]'} data-testid="password-changed-box">
         <div className={'w-full bow-shadow flex flex-col flex-nowrap items-center mt-16 sm:mt-24 px-5 pt-12 pb-7 rounded-10'}>
 
           <div className={'text-xl text-center'}>

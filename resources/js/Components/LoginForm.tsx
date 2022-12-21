@@ -30,7 +30,7 @@ export default function LoginForm (): JSX.Element {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'}>
+    <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'} data-testid="login-form">
       <div>
         <div className={'pb-3.5'}>
           <Input

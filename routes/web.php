@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgottenPasswordController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Auth\ForgottenPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\LocaleController;

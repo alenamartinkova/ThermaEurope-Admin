@@ -18,10 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $admin_default
  * @property int $is_active
  * @property int $is_deleted
- *
- * @package App\Models
  */
-class Currency extends Model {
+class Currency extends Model
+{
     // table name
     protected $table = 'currency';
 

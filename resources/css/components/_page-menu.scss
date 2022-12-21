@@ -12,6 +12,15 @@
   }
 }
 
+.page-menu-item__heading {
+  color: theme('colors.blue');
+  font-weight: 500;
+
+  svg {
+    fill: theme('colors.blue');
+  }
+}
+
 .page-menu-item.active {
   background-color: theme('colors.cyan-light');
   color: theme('colors.blue');
