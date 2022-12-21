@@ -9,21 +9,15 @@ use Inertia\Response;
 
 class AccountController extends Controller
 {
-    /** @var CurrencyService */
-    private CurrencyService $currencyService;
-
     /** @var LanguageService */
     private LanguageService $languageService;
 
     /**
-     * @param CurrencyService $currencyService
      * @param LanguageService $languageService
      */
     public function __construct(
-        CurrencyService $currencyService,
         LanguageService $languageService
     ) {
-        $this->currencyService = $currencyService;
         $this->languageService = $languageService;
     }
 
@@ -32,7 +26,6 @@ class AccountController extends Controller
      */
     public function preferences(): Response
     {
-        $data['currencies'] = $this->currencyService->getAllCurrencies();
         $data['languages'] = $this->languageService->getAllLanguages();
 
         return Inertia::render('Preferences', $data);

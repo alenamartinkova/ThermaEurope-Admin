@@ -8,11 +8,10 @@ import AccountBlock from '../Components/Account/AccountBlock'
 import AccountShowEdit from '../Components/Account/AccountShowEdit'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 import AccountPageMenu from '../Components/Account/AccountPageMenu'
-import { Currency } from '../Interfaces/Models/Currency'
 import { Language } from '../Interfaces/Models/Language'
 
 export default function Preferences (): JSX.Element {
-  const { user, currencies, languages } = usePage<Page<SharedProps & { currencies: Currency[] } & { languages: Language[] }>>().props
+  const { user, languages } = usePage<Page<SharedProps & { languages: Language[] }>>().props
   const { t } = useLaravelReactI18n()
 
   return (
@@ -26,11 +25,6 @@ export default function Preferences (): JSX.Element {
         title={'Language'}
         showContent={<AccountShowContent value={user.communication_lang}/>}
         showEdit={<AccountShowEdit optionsForSelect={languages} value={user.communication_lang} label={t?.('account_pages.language.label') ?? '' } text={t?.('account_pages.language.text') ?? ''}/>}
-      />
-      <AccountBlock
-        title={'Currency'}
-        showContent={<AccountShowContent value={user.default_currency}/>}
-        showEdit={<AccountShowEdit optionsForSelect={currencies} value={user.default_currency} label={t?.('account_pages.currency.label') ?? ''} text={t?.('account_pages.currency.text') ?? ''}/>}
       />
     </PageLayout>
   )
