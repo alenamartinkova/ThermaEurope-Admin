@@ -3,15 +3,14 @@ import * as Avatar from '@radix-ui/react-avatar'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import AvatarPlaceholder from '../Icons/AvatarPlaceholder'
 import LogoutIcon from '../Icons/LogoutIcon'
-import { useLaravelReactI18n } from 'laravel-react-i18n'
 import route from 'ziggy-js'
 import { Inertia, Page } from '@inertiajs/inertia'
 import { usePage } from '@inertiajs/inertia-react'
 import { SharedProps } from '../../Interfaces/SharedProps'
+import Translate from '../Translate'
 import HomeAccount from '../Icons/HomeAccount'
 
 export default function AccountMenu (): JSX.Element {
-  const { t } = useLaravelReactI18n()
   const { user } = usePage<Page<SharedProps>>().props
   const handleLink = (routeName: string): void => {
     Inertia.visit(route(routeName))
@@ -69,7 +68,9 @@ export default function AccountMenu (): JSX.Element {
                   <div className={'item-icon w-5 h-5'}>
                     <LogoutIcon/>
                   </div>
-                  <div className={'text-grey-text'}>{t?.('layout.account_menu.logout')}</div>
+                  <div>
+                    <Translate value={'layout.account_menu.logout'}/>
+                  </div>
                 </DropdownMenu.Item>
               </div>
             </DropdownMenu.Content>

@@ -12,6 +12,6 @@ class ReservationController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('ReservationList');
+        return Inertia::render('ReservationList', []);
     }
 }

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useLaravelReactI18n } from 'laravel-react-i18n'
 import { usePage } from '@inertiajs/inertia-react'
 import HomeClose from '../Icons/HomeClose'
 import { Page } from '@inertiajs/inertia'
 import { SharedProps } from '../../Interfaces/SharedProps'
 import MainMenu from './MainMenu'
 import { useActiveItem } from '../../Providers/OffCanvasContextProvider'
+import { useLaravelReactI18n } from 'laravel-react-i18n'
 
 export default function OffCanvas (): JSX.Element {
   const { t } = useLaravelReactI18n()

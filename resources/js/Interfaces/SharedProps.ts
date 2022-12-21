@@ -15,4 +15,8 @@ export interface SharedProps extends PageProps {
     }
   }
   user: User
+  flash: {
+    message?: string
+  }
+  csrf_token: string
 }

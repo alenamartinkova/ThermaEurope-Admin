@@ -124,6 +124,9 @@ class HandleInertiaRequests extends Middleware
         });
 
         $props['user'] = Auth::user();
+        $props['flash'] = [
+            'message' => $request->session()->get('message'),
+        ];
 
         return array_merge(parent::share($request), $props);
     }

@@ -32,3 +32,8 @@ header {
   @apply border-error-red;
   box-shadow: 0 3px 6px rgba(234, 2, 21, 0.15);
 }
+
+code {
+  @apply text-blue-active;
+  @apply font-body;
+}

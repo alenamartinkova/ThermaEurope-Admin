@@ -7,26 +7,18 @@ import route from 'ziggy-js'
 import Translate from './Translate'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 
-export default function LoginForm (): JSX.Element {
+export default function ForgottenPasswordForm (): JSX.Element {
   const { t } = useLaravelReactI18n()
   const { errors } = usePage<Page<SharedProps>>().props
-  const [values, setValues] = useState({
-    email: '',
-    password: ''
-  })
+  const [email, setEmail] = useState('')
 
   function handleChange (e: React.ChangeEvent<HTMLInputElement>): void {
-    const key = e.target.id
-    const value = e.target.value
-    setValues(values => ({
-      ...values,
-      [key]: value
-    }))
+    setEmail(e.target.value)
   }
 
   function handleSubmit (e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault()
-    Inertia.post(route('login'), values)
+    Inertia.post(route('password.email'), { email, wantsJson: true })
   }
 
   return (
@@ -37,26 +29,15 @@ export default function LoginForm (): JSX.Element {
             id="email"
             type="text"
             placeholder={t?.('pageLogin.login_form.email_placeholder')}
-            value={values.email}
+            value={email}
             onChange={handleChange}
             error={errors.email}
-          />
-        </div>
-
-        <div className={'pb-3.5'}>
-          <Input
-            id="password"
-            type="password"
-            placeholder={t?.('pageLogin.login_form.password_placeholder')}
-            value={values.password}
-            onChange={handleChange}
-            error={errors.password}
           />
         </div>
       </div>
 
       <button type="submit" className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
-        <Translate value={'pageLogin.login_form.log_in'} />
+        <Translate value='pageLogin.send_link'/>
       </button>
     </form>
   )

@@ -1,9 +1,9 @@
 import React, { PropsWithChildren } from 'react'
-import { useLaravelReactI18n } from 'laravel-react-i18n'
 import route from 'ziggy-js'
 import HomeIcon from '../Icons/HomeIcon'
 import { Inertia } from '@inertiajs/inertia'
 import ReservationsIcon from '../Icons/ReservationsIcon'
+import Translate from '../Translate'
 
 export type MainMenuActiveItem = null | 'home' | 'reservation'
 
@@ -23,7 +23,6 @@ export const itemsData: Array<{ routeName: string, activeItem: MainMenuActiveIte
 ]
 
 export default function MainMenu (props: { activeItem: MainMenuActiveItem, onItemClick?: () => void }): JSX.Element {
-  const { t } = useLaravelReactI18n()
   const { activeItem, onItemClick } = props
 
   const handleItemClick = (routeName: string): void => {
@@ -38,7 +37,7 @@ export default function MainMenu (props: { activeItem: MainMenuActiveItem, onIte
           <MenuItem key={item.activeItem} onClick={() => handleItemClick(item.routeName)} isActive={activeItem === item.activeItem}>
             {item.icon}
             <div className={'pl-2.5'}>
-              {t?.(item.label)}
+              <Translate value={item.label} />
             </div>
           </MenuItem>
         )
