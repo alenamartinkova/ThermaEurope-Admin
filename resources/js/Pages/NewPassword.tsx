@@ -56,7 +56,7 @@ export default function NewPassword (): JSX.Element {
 
   return (
     <LoginPageLayout title={<Translate value={'pageLogin.new_password'}/>} text={<Translate value={'pageLogin.new_password_text'}/>}>
-      <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'}>
+      <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'} data-testid="new-password-form">
         <div>
           <ValidationError className={'pb-3.5'} error={errors.email}/>
 
@@ -83,7 +83,11 @@ export default function NewPassword (): JSX.Element {
           </div>
         </div>
 
-        <button onClick={generatePassword} className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
+        <button
+          onClick={generatePassword}
+          className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}
+          data-testid="generate-password-button"
+        >
           <Translate value={'pageLogin.generate_password'} />
         </button>
 

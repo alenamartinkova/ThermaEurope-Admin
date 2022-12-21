@@ -22,8 +22,12 @@ export default function ForgottenPassword (): JSX.Element {
           {(message !== '') ? <ForgottenPasswordMessage message={message}/> : <ForgottenPasswordForm/>}
 
           <div className={'w-full flex flex-row justify-center mt-5'}>
-            <button onClick={toggleShowInfo} className={'text-blue-active text-xs'}>
-              <Translate value='pageLogin.are_there_problems' />
+            <button
+              onClick={toggleShowInfo}
+              className={'text-blue-active text-xs'}
+              data-testid="are-there-problems-button"
+            >
+              <Translate value='pageLogin.are_there_problems'/>
             </button>
           </div>
         </div>
@@ -35,10 +39,16 @@ export default function ForgottenPassword (): JSX.Element {
             <Translate value={'pageLogin.problems_info'}/>
           </div>
           <div className={'w-full flex flex-col justify-center mt-5'}>
-            <a href={t?.('pageLogin.customer_service_url')} target={'_blank'} className={'bg-blue-active text-white w-full py-3 rounded-10 text-base text-center'} rel="noreferrer">
+            <a
+              href={t?.('pageLogin.customer_service_url')}
+              target={'_blank'}
+              className={'bg-blue-active text-white w-full py-3 rounded-10 text-base text-center'}
+              rel="noreferrer"
+              data-testid="customer-service-link"
+            >
               <Translate value={'pageLogin.customer_service'}/>
             </a>
-            <button onClick={toggleShowInfo} className={'text-blue-active text-xs mt-6'}>
+            <button onClick={toggleShowInfo} className={'text-blue-active text-xs mt-6'} data-testid="back-button">
               <Translate value={'pageLogin.back'}/>
             </button>
           </div>

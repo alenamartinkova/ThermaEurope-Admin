@@ -22,7 +22,7 @@ export default function ForgottenPasswordForm (): JSX.Element {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'}>
+    <form onSubmit={handleSubmit} className={'flex flex-col items-stretch'} data-testid="forgotten-password-form">
       <div>
         <div className={'pb-3.5'}>
           <Input
