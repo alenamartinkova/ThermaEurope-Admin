@@ -1,8 +1,12 @@
 import React from 'react'
 import PageLayout from '../Components/Layout/PageLayout'
 import AccountPageMenu from '../Components/Account/AccountPageMenu'
+import { usePage } from '@inertiajs/inertia-react'
+import { Page } from '@inertiajs/inertia'
+import { SharedProps } from '../Interfaces/SharedProps'
 
 export default function Security (): JSX.Element {
+  const { user } = usePage<Page<SharedProps>>().props
   return (
     <PageLayout
       title={'Security'}
@@ -10,7 +14,7 @@ export default function Security (): JSX.Element {
       mainMenuActiveItem={null}
       hasHeading={true}
     >
-      Security
+     Security
     </PageLayout>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Select from '@radix-ui/react-select'
 
-export default function AccountBlockSelect (props: { optionsForSelect, value: string }): JSX.Element {
+export default function AccountBlockSelect (props: { optionsForSelect: any[], value: string }): JSX.Element {
   const { optionsForSelect, value } = props
   const [selectValue, setValue] = React.useState(value)
 
@@ -12,7 +12,7 @@ export default function AccountBlockSelect (props: { optionsForSelect, value: st
   return (
     <div className={'account-select'}>
       <Select.Root value={selectValue} onValueChange={ selectValue => handleSetValue(selectValue) }>
-        <Select.Trigger className="pl-2 flex justify-start grey-text items-center h-10 max-w-[20rem] w-full border border-solid border-grey-input rounded-5">
+        <Select.Trigger className="pl-2 flex justify-start text-grey-text items-center h-10 max-w-[20rem] w-full border border-solid border-grey-input rounded-5">
           {selectValue}
         </Select.Trigger>
         <Select.Content className="bg-white border border-solid border-grey-input rounded-5 w-[20rem]">
@@ -20,7 +20,7 @@ export default function AccountBlockSelect (props: { optionsForSelect, value: st
             <Select.Group>
               { optionsForSelect.map((item) => {
                 return (
-                  <Select.SelectItem key={item.id} className={'item items-center grey-text rounded flex p-2 cursor-pointer hover:bg-gray-hover'} value={item.code}>
+                  <Select.SelectItem key={item.id} className={'item items-center text-grey-text rounded flex p-2 cursor-pointer hover:bg-gray-hover active:bg-gray-light'} value={item.code}>
                     {item.code}
                   </Select.SelectItem>
                 )

@@ -15,7 +15,7 @@ export default function AccountBlock (props: { title: string, showContent: React
           { showContent }
             <div className={'flex flex-row justify-end'}>
               <button type={'button'} onClick={() => setOpen(open => !open)}
-                      className={'hover:bg-cyan font-medium rounded-5 px-5 py-3 text-dark-cyan'}>
+                      className={'hover:bg-cyan active:bg-cyan-active text-blue hover:text-blue-hover active:text-blue-active font-medium rounded-5 px-5 py-3'}>
                 {t?.('account_pages.edit')}
               </button>
             </div>
@@ -24,11 +24,11 @@ export default function AccountBlock (props: { title: string, showContent: React
           { showEdit }
             <div className={'flex flex-row justify-end'}>
               <button type={'button'} onClick={() => setOpen(open => !open)}
-                      className={'hover:bg-cyan font-medium rounded-5 px-5 py-3 mr-3 text-dark-cyan'}>
+                      className={'hover:bg-cyan active:bg-cyan-active text-blue hover:text-blue-hover active:text-blue-active font-medium rounded-5 px-5 py-3 mr-3'}>
                 {t?.('account_pages.cancel')}
               </button>
               <button type={'button'} onClick={() => setOpen(open => !open)}
-                      className={'bg-blue-active font-medium rounded-5 text-white px-5 py-3'}>
+                      className={'bg-blue hover:bg-blue-hover active:bg-blue-active font-medium rounded-5 text-white px-5 py-3'}>
                 {t?.('account_pages.save')}
               </button>
           </div>

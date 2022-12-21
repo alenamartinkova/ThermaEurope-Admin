@@ -11,7 +11,7 @@ export default function Login (): JSX.Element {
 
         {/* Column Left */}
         <div className={'grow flex flex-col justify-center w-[24rem]'}>
-          <h1 className={'text-[2.5rem] leading-[3rem] font-medium text-blue-active'}>
+          <h1 className={'text-[2.5rem] leading-[3rem] font-medium text-blue'}>
             {t?.('page_login.welcome')}
           </h1>
           <hr className={'h-px bg-grey-border border-0 my-3.5'}/>

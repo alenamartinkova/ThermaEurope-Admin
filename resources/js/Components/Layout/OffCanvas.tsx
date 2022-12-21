@@ -20,7 +20,7 @@ export default function OffCanvas (): JSX.Element {
         <div className={'main-menu'}>
           {/* Trigger */}
           <button onClick={() => toggleIsOpen()}
-                  className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25 hover:bg-gray-hover">
+                  className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25 hover:bg-gray-hover active:bg-gray-light">
             <img className="w-5" src="/images/layout/main-menu-hamburger.svg" alt={t?.('layout.main_menu')}/>
           </button>
 
@@ -34,7 +34,7 @@ export default function OffCanvas (): JSX.Element {
               <div className="bg-white opacity-100 fixed left-0 top-0 bottom-0 w-64 min-w-fit">
                 <div className="flex flex-row flex-nowrap justify-between items-center fixed top-0 h-15 sm:h-17 mx-5">
                   {/* Close Button */}
-                  <button onClick={toggleIsOpen} className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25">
+                  <button onClick={toggleIsOpen} className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25 active:bg-gray-light">
                     <span className={'w-5 h-5'}>
                       <HomeClose/>
                     </span>

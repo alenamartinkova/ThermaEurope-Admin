@@ -41,7 +41,7 @@ export default function PageLayout (props: PropsWithChildren<{ title: string, me
           </Collapsible.Content>
         </Collapsible.Root>
 
-        <h1 className={'mt-5 hidden md:block'}>
+        <h1 className={'mt-5 hidden md:block font-medium'}>
           {title}
         </h1>
 

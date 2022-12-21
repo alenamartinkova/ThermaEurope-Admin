@@ -14,9 +14,9 @@
 
 .page-menu-item.active {
   background-color: theme('colors.cyan-light');
-  color: theme('colors.blue-active');
+  color: theme('colors.blue');
 
   svg {
-    fill: theme('colors.blue-active');
+    fill: theme('colors.blue');
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import PageLayout from '../Components/Layout/PageLayout'
-import IndexPageMenu from '../Components/IndexPageMenu'
 import { usePage } from '@inertiajs/inertia-react'
 import { Page } from '@inertiajs/inertia'
 import { SharedProps } from '../Interfaces/SharedProps'
@@ -9,9 +8,11 @@ import AccountBlock from '../Components/Account/AccountBlock'
 import AccountShowEdit from '../Components/Account/AccountShowEdit'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 import AccountPageMenu from '../Components/Account/AccountPageMenu'
+import { Currency } from '../Interfaces/Models/Currency'
+import { Language } from '../Interfaces/Models/Language'
 
 export default function Preferences (): JSX.Element {
-  const { user, currencies, languages } = usePage<Page<SharedProps>>().props
+  const { user, currencies, languages } = usePage<Page<SharedProps & { currencies: Currency[] } & { languages: Language[] }>>().props
   const { t } = useLaravelReactI18n()
 
   return (

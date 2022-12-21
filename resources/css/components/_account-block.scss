@@ -5,10 +5,6 @@
     display: block;
   }
 
-  .grey-text {
-    color: theme('colors.grey-text');
-  }
-
   .account-select {
     .item[data-state='checked'] {
       background-color: theme('colors.cyan-light');

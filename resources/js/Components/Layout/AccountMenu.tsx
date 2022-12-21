@@ -24,11 +24,11 @@ export default function AccountMenu (): JSX.Element {
           <DropdownMenu.Root>
             <DropdownMenu.Trigger className={'account-menu-trigger'} asChild>
               <button
-                className={'bg-white h-10 sm:h-13 pl-2.5 pr-5 justify-center items-center border border-gray-light rounded-25 hover:bg-gray-hover'}>
+                className={'bg-white h-10 sm:h-13 pl-2.5 pr-2.5 sm:pr-5 justify-center items-center border border-gray-light rounded-25 hover:bg-gray-hover'}>
                 <Avatar.Root>
                   <Avatar.Fallback className={'avatar-placeholder flex flex-row flex-nowrap items-center '}>
                     <AvatarPlaceholder/>
-                    <span className={'pl-2.5'}>TODO</span>
+                    <span className={'pl-2.5 hidden sm:block'}>TODO</span>
                   </Avatar.Fallback>
                 </Avatar.Root>
               </button>
@@ -46,21 +46,21 @@ export default function AccountMenu (): JSX.Element {
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
                   </div>
-                  <div>{t?.('layout.account_menu.personal_information')}</div>
+                  <div className={'text-grey-text'}>{t?.('layout.account_menu.personal_information')}</div>
                 </DropdownMenu.Item>
 
                 <DropdownMenu.Item onSelect={() => handleLink('account.preferences')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
                   </div>
-                  <div>{t?.('layout.account_menu.preferences')}</div>
+                  <div className={'text-grey-text'}>{t?.('layout.account_menu.preferences')}</div>
                 </DropdownMenu.Item>
 
                 <DropdownMenu.Item onSelect={() => handleLink('account.security')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
                   </div>
-                  <div>{t?.('layout.account_menu.security')}</div>
+                  <div className={'text-grey-text'}>{t?.('layout.account_menu.security')}</div>
                 </DropdownMenu.Item>
 
                 <hr className={'mt-2 mb-2'}/>
@@ -69,7 +69,7 @@ export default function AccountMenu (): JSX.Element {
                   <div className={'item-icon w-5 h-5'}>
                     <LogoutIcon/>
                   </div>
-                  <div>{t?.('layout.account_menu.logout')}</div>
+                  <div className={'text-grey-text'}>{t?.('layout.account_menu.logout')}</div>
                 </DropdownMenu.Item>
               </div>
             </DropdownMenu.Content>
