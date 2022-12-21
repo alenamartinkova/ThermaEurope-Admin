@@ -6,8 +6,10 @@ use App\Exceptions\NotAuthenticatedException;
 use App\Http\Requests\LanguageUpdateRequest;
 use App\Services\LanguageService;
 use App\Services\UserService;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
+use Redirect;
 
 class AccountController extends Controller
 {
@@ -56,14 +58,16 @@ class AccountController extends Controller
     }
 
     /**
-     * @param  LanguageUpdateRequest  $request
-     *
+     * @param LanguageUpdateRequest $request
+     * @return RedirectResponse
      * @throws NotAuthenticatedException
      */
-    public function updateAccountLanguage(LanguageUpdateRequest $request)
+    public function updateAccountLanguage(LanguageUpdateRequest $request): RedirectResponse
     {
         $data = $request->getData();
 
         $this->userService->updateMyCommunicationLanguage($data['communication_lang']);
+
+        return Redirect::back();
     }
 }
