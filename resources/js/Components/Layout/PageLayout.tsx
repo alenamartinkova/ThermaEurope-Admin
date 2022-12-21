@@ -6,7 +6,7 @@ import ArrowDown from '../Icons/ArrowDown'
 import ArrowUp from '../Icons/ArrowUp'
 import { useActiveItemUpdate } from '../../Providers/OffCanvasContextProvider'
 
-export default function PageLayout (props: PropsWithChildren<{ title: string, menu: React.ReactNode, mainMenuActiveItem: MainMenuActiveItem, hasHeading: boolean }>): JSX.Element {
+export default function PageLayout (props: PropsWithChildren<{ title: JSX.Element, menu: React.ReactNode, mainMenuActiveItem: MainMenuActiveItem, hasHeading: boolean }>): JSX.Element {
   const { title, menu, mainMenuActiveItem, hasHeading } = props
   const [open, setOpen] = React.useState(false)
   const setOffCanvasActiveItem = useActiveItemUpdate()

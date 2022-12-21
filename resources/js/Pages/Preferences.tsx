@@ -9,6 +9,7 @@ import AccountShowEdit from '../Components/Account/AccountShowEdit'
 import { useLaravelReactI18n } from 'laravel-react-i18n'
 import AccountPageMenu from '../Components/Account/AccountPageMenu'
 import { Language } from '../Interfaces/Models/Language'
+import Translate from '../Components/Translate'
 
 export default function Preferences (): JSX.Element {
   const { user, languages } = usePage<Page<SharedProps & { languages: Language[] }>>().props
@@ -16,7 +17,7 @@ export default function Preferences (): JSX.Element {
 
   return (
     <PageLayout
-      title={'Preferences'}
+      title={<Translate value={'account_pages.preferences.title'} />}
       menu={<AccountPageMenu activeItem={'preferences'}/>}
       mainMenuActiveItem={null}
       hasHeading={true}

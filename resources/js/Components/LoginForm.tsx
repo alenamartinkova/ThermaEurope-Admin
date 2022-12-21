@@ -55,7 +55,7 @@ export default function LoginForm (): JSX.Element {
         </div>
       </div>
 
-      <button type="submit" className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
+      <button type="submit" className={'bg-blue hover:bg-blue-hover active:bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
         <Translate value={'pageLogin.login_form.log_in'} />
       </button>
     </form>

@@ -36,7 +36,7 @@ export default function ForgottenPasswordForm (): JSX.Element {
         </div>
       </div>
 
-      <button type="submit" className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
+      <button type="submit" className={'bg-blue hover:bg-blue-hover active:bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
         <Translate value='pageLogin.send_link'/>
       </button>
     </form>

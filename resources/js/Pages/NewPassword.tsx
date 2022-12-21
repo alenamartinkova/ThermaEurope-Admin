@@ -83,7 +83,7 @@ export default function NewPassword (): JSX.Element {
           </div>
         </div>
 
-        <button onClick={generatePassword} className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
+        <button onClick={generatePassword} className={'bg-blue hover:bg-blue-hover active:bg-blue-active text-white w-full py-3 rounded-10 text-base'}>
           <Translate value={'pageLogin.generate_password'} />
         </button>
 

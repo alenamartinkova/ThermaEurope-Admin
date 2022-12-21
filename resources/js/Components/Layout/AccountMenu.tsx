@@ -45,21 +45,27 @@ export default function AccountMenu (): JSX.Element {
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
                   </div>
-                  <div className={'text-grey-text'}>{t?.('layout.account_menu.personal_information')}</div>
+                  <div className={'text-grey-text'}>
+                    <Translate value={'layout.account_menu.personal_information'} />
+                  </div>
                 </DropdownMenu.Item>
 
                 <DropdownMenu.Item onSelect={() => handleLink('account.preferences')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
                   </div>
-                  <div className={'text-grey-text'}>{t?.('layout.account_menu.preferences')}</div>
+                  <div className={'text-grey-text'}>
+                    <Translate value={'layout.account_menu.preferences'} />
+                  </div>
                 </DropdownMenu.Item>
 
                 <DropdownMenu.Item onSelect={() => handleLink('account.security')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
                   </div>
-                  <div className={'text-grey-text'}>{t?.('layout.account_menu.security')}</div>
+                  <div className={'text-grey-text'}>
+                    <Translate value={'layout.account_menu.security'} />
+                  </div>
                 </DropdownMenu.Item>
 
                 <hr className={'mt-2 mb-2'}/>
@@ -68,7 +74,7 @@ export default function AccountMenu (): JSX.Element {
                   <div className={'item-icon w-5 h-5'}>
                     <LogoutIcon/>
                   </div>
-                  <div>
+                  <div className={'text-grey-text'}>
                     <Translate value={'layout.account_menu.logout'}/>
                   </div>
                 </DropdownMenu.Item>

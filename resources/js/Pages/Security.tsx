@@ -1,15 +1,12 @@
 import React from 'react'
 import PageLayout from '../Components/Layout/PageLayout'
 import AccountPageMenu from '../Components/Account/AccountPageMenu'
-import { usePage } from '@inertiajs/inertia-react'
-import { Page } from '@inertiajs/inertia'
-import { SharedProps } from '../Interfaces/SharedProps'
+import Translate from '../Components/Translate'
 
 export default function Security (): JSX.Element {
-  const { user } = usePage<Page<SharedProps>>().props
   return (
     <PageLayout
-      title={'Security'}
+      title={<Translate value={'account_pages.security.title'} />}
       menu={<AccountPageMenu activeItem={'security'}/>}
       mainMenuActiveItem={null}
       hasHeading={true}

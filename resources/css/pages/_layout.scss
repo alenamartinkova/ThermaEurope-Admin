@@ -34,6 +34,14 @@ header {
 }
 
 code {
-  @apply text-blue-active;
+  @apply text-blue;
   @apply font-body;
+
+  &:hover {
+    @apply text-blue-hover;
+  }
+
+  &:active {
+    @apply text-blue-hover;
+  }
 }
