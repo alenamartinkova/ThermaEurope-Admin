@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CurrencyService;
+use App\Exceptions\NotAuthenticatedException;
+use App\Http\Requests\LanguageUpdateRequest;
 use App\Services\LanguageService;
+use App\Services\UserService;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -12,13 +15,19 @@ class AccountController extends Controller
     /** @var LanguageService */
     private LanguageService $languageService;
 
+    /** @var UserService */
+    private UserService $userService;
+
     /**
      * @param LanguageService $languageService
+     * @param UserService $userService
      */
     public function __construct(
-        LanguageService $languageService
+        LanguageService $languageService,
+        UserService $userService
     ) {
         $this->languageService = $languageService;
+        $this->userService = $userService;
     }
 
     /**
@@ -45,5 +54,15 @@ class AccountController extends Controller
     public function security(): Response
     {
         return Inertia::render('Security');
+    }
+
+    /**
+     * @param LanguageUpdateRequest $request
+     * @throws NotAuthenticatedException
+     */
+    public function updateAccountLanguage(LanguageUpdateRequest $request) {
+        $data = $request->getData();
+
+        $this->userService->updateMyCommunicationLanguage($data['communication_lang']);
     }
 }

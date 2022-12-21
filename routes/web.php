@@ -54,4 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/personal-information', [AccountController::class, 'personalInformation'])->name('account.personal_information');
     // Account - Security
     Route::get('/security', [AccountController::class, 'security'])->name('account.security');
+
+    // Account - Post
+    Route::post('/update-account-language', [AccountController::class, 'updateAccountLanguage'])->name('account.update_account_language');
 });

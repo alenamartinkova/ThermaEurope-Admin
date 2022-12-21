@@ -7,7 +7,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use App\Models\Currency;
 
 /**
- * Class CurrencyRepositoryEloquent.
+ * Class CurrencyRepository.
  *
  * @package namespace App\Repositories;
  */

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
- * Class CurrencyRepositoryEloquent.
+ * Class CurrencyRepository.
  *
  * @package namespace App\Repositories;
  */
@@ -29,5 +29,14 @@ class LanguageRepository extends BaseRepository
     public function getLanguages(): Builder
     {
         return $this->model->Active()->Deleted();
+    }
+
+    /**
+     * @param string $code
+     * @return Builder
+     */
+    public function getLanguageByCode(string $code): Builder
+    {
+        return $this->getLanguages()->where('code', $code);
     }
 }
