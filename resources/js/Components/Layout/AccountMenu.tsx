@@ -23,9 +23,10 @@ export default function AccountMenu (): JSX.Element {
           <DropdownMenu.Root>
             <DropdownMenu.Trigger className={'account-menu-trigger'} asChild>
               <button
-                className={'bg-white h-10 sm:h-13 pl-2.5 pr-2.5 sm:pr-5 justify-center items-center border border-gray-light rounded-25 hover:bg-gray-hover'}>
+                className={'bg-white h-10 sm:h-13 px-2.5 sm:pr-5 justify-center items-center border border-gray-light rounded-25 hover:bg-gray-hover'}
+              >
                 <Avatar.Root>
-                  <Avatar.Fallback className={'avatar-placeholder flex flex-row flex-nowrap items-center '}>
+                  <Avatar.Fallback className={'avatar-placeholder flex flex-row flex-nowrap items-center'}>
                     <AvatarPlaceholder/>
                     <span className={'pl-2.5 hidden sm:block'}>TODO</span>
                   </Avatar.Fallback>

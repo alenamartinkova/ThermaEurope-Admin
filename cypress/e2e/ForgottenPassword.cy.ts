@@ -18,10 +18,14 @@ describe('forgotten password page', () => {
     cy.server()
     cy.route('POST', '**/forgotten-password').as('postForgottenPassword');
     cy.route('GET', '**/login').as('getLogin');
+    cy.route('GET', '**/forgotten-password').as('getForgottenPassword');
+
 
     cy.visit(loginUrl)
 
     getApp().find('[data-testid=forgotten-password-link]').click()
+    cy.wait('@getForgottenPassword')
+
     cy.location('pathname').should('eq', '/forgotten-password')
 
     getApp().find(('[data-testid=are-there-problems-button]')).click()
