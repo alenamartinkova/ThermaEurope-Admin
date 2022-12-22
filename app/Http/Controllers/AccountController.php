@@ -58,8 +58,9 @@ class AccountController extends Controller
     }
 
     /**
-     * @param LanguageUpdateRequest $request
+     * @param  LanguageUpdateRequest  $request
      * @return RedirectResponse
+     *
      * @throws NotAuthenticatedException
      */
     public function updateAccountLanguage(LanguageUpdateRequest $request): RedirectResponse

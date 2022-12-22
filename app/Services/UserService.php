@@ -35,12 +35,13 @@ class UserService
      */
     public function updateMyCommunicationLanguage(string $communicationLanguage): void
     {
-        Log::info('Updating user communication language.', [
+        Log::info('Updating my communication language.', [
             'communication_lang' => $communicationLanguage,
         ]);
 
         $user = Auth::user();
-        if (!$user) {
+        if (! $user) {
+            Log::error('Error updating my communication language. No user authenticated.');
             throw new NotAuthenticatedException();
         }
 
@@ -48,15 +49,15 @@ class UserService
 
         try {
             $this->userRepository->update(['communication_lang' => $communicationLanguage], $user->id);
-            Log::info('User communication language updated.', [
-                'user_id' => $user->id,
-                'communication_lang' => $communicationLanguage
-            ]);
-        } catch (Exception $e) {
-            Log::error('Error updating user communication language. User ID: ', [
+            Log::info('My communication language updated.', [
                 'user_id' => $user->id,
                 'communication_lang' => $communicationLanguage,
-                'message' => $e->getMessage()
+            ]);
+        } catch (Exception $e) {
+            Log::error('Error updating my communication language.', [
+                'user_id' => $user->id,
+                'communication_lang' => $communicationLanguage,
+                'message' => $e->getMessage(),
             ]);
         }
     }
