@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { Link } from '@inertiajs/inertia-react'
+import { Head, Link } from '@inertiajs/inertia-react'
 import route from 'ziggy-js'
 import LanguageMenu from './LanguageMenu'
 import OffCanvas from './OffCanvas'
@@ -10,6 +10,7 @@ import Translate from '../Translate'
 export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
   return (
     <OffCanvasContextProvider>
+      <Head title={'Admin | Spanamo.com'}/>
       <header className={'bg-white flex flex-row flex-nowrap justify-between items-center fixed top-0 w-screen h-15 sm:h-17'}>
         <div className={'w-full mx-2 sm:mx-5 flex flex-row flex-nowrap justify-between items-center'}>
           <div className={'flex flex-row flex-nowrap items-center gap-x-2 sm:gap-x-3.5'}>
