@@ -48,14 +48,14 @@ class UserService
         $this->languageRepository->getLanguageByCode($communicationLanguage)->firstOrFail();
 
         try {
-            $this->userRepository->update(['communication_lang' => $communicationLanguage], $user->id);
+            $this->userRepository->update(['communication_lang' => $communicationLanguage], $user->getAuthIdentifier());
             Log::info('My communication language updated.', [
-                'user_id' => $user->id,
+                'user_id' => $user->getAuthIdentifier(),
                 'communication_lang' => $communicationLanguage,
             ]);
         } catch (Exception $e) {
             Log::error('Error updating my communication language.', [
-                'user_id' => $user->id,
+                'user_id' => $user->getAuthIdentifier(),
                 'communication_lang' => $communicationLanguage,
                 'message' => $e->getMessage(),
             ]);

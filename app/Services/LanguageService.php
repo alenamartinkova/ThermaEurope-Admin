@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Language;
 use App\Repositories\LanguageRepository;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -20,7 +21,7 @@ class LanguageService
     }
 
     /**
-     * @return Collection
+     * @return Collection<int, Language>
      */
     public function getAllLanguages(): Collection
     {

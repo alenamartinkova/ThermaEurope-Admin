@@ -36,9 +36,7 @@ class AccountController extends Controller
      */
     public function preferences(): Response
     {
-        $data['languages'] = $this->languageService->getAllLanguages();
-
-        return Inertia::render('Preferences', $data);
+        return Inertia::render('Preferences', ['languages' => $this->languageService->getAllLanguages()]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Currency;
 use App\Repositories\CurrencyRepository;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -19,7 +20,7 @@ class CurrencyService
     }
 
     /**
-     * @return Collection
+     * @return Collection<int, Currency>
      */
     public function getAllCurrencies(): Collection
     {
