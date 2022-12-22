@@ -94,7 +94,7 @@ export default function NewPassword (): JSX.Element {
         <hr className={'h-px bg-grey-border border-0 my-5 mx-4 md:mx-0'}/>
 
         <button type="submit" className={'bg-green-active text-white w-full py-3 rounded-10 text-base'}>
-          <Translate value={'pageLogin.send_link'} />
+          <Translate value={'pageLogin.set_new_password'} />
         </button>
       </form>
     </LoginPageLayout>
