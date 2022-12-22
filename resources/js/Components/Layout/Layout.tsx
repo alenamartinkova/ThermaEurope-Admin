@@ -11,8 +11,8 @@ export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
   return (
     <OffCanvasContextProvider>
       <header className={'bg-white flex flex-row flex-nowrap justify-between items-center fixed top-0 w-screen h-15 sm:h-17'}>
-        <div className={'w-full mx-5 flex flex-row flex-nowrap justify-between items-center'}>
-          <div className={'flex flex-row flex-nowrap items-center gap-x-3.5'}>
+        <div className={'w-full mx-2 sm:mx-5 flex flex-row flex-nowrap justify-between items-center'}>
+          <div className={'flex flex-row flex-nowrap items-center gap-x-2 sm:gap-x-3.5'}>
 
             <OffCanvas/>
 
@@ -24,7 +24,7 @@ export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
             </Link>
           </div>
 
-          <div className={'flex flex-row flex-nowrap gap-x-3.5 pl-3.5'}>
+          <div className={'flex flex-row flex-nowrap gap-x-2 sm:gap-x-3.5 pl-2 sm:pl-3.5'}>
             <AccountMenu/>
             <LanguageMenu/>
           </div>
