@@ -21,7 +21,7 @@ export default function OffCanvas (): JSX.Element {
           {/* Trigger */}
           <button
             onClick={() => toggleIsOpen()}
-            className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25 hover:bg-gray-hover"
+            className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25 hover:bg-gray-hover active:bg-gray-light"
             data-testid="off-canvas-trigger"
           >
             <img className="w-5" src="/images/layout/main-menu-hamburger.svg" alt={t?.('layout.main_menu')}/>
@@ -43,7 +43,7 @@ export default function OffCanvas (): JSX.Element {
                   {/* Close Button */}
                   <button
                     onClick={toggleIsOpen}
-                    className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25"
+                    className="bg-white hover:bg-gray-hover h-10 sm:h-13 w-10 sm:w-13 flex justify-center items-center border-none rounded-25 active:bg-gray-light"
                     data-testid="off-canvas-close-trigger"
                   >
                     <span className={'w-5 h-5'}>

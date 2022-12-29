@@ -15,6 +15,7 @@ export default function ReservationList (): JSX.Element {
       title={<>Reservations</>}
       menu={<IndexPageMenu activeItem={'reservation'}/>}
       mainMenuActiveItem={'reservation'}
+      hasHeading={false}
     >
       Reservation list!!!
     </PageLayout>

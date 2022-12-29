@@ -24,10 +24,10 @@ export default function ForgottenPassword (): JSX.Element {
           <div className={'w-full flex flex-row justify-center mt-5'}>
             <button
               onClick={toggleShowInfo}
-              className={'text-blue-active text-xs'}
+              className={'text-blue hover:text-blue-hover active:text-blue-active text-xs'}
               data-testid="are-there-problems-button"
             >
-              <Translate value='pageLogin.are_there_problems'/>
+              <Translate value='pageLogin.are_there_problems' />
             </button>
           </div>
         </div>
@@ -42,13 +42,17 @@ export default function ForgottenPassword (): JSX.Element {
             <a
               href={t?.('pageLogin.customer_service_url')}
               target={'_blank'}
-              className={'bg-blue-active text-white w-full py-3 rounded-10 text-base text-center'}
+              className={'bg-blue hover:bg-blue-active active:bg-blue-active text-white w-full py-3 rounded-10 text-base text-center'}
               rel="noreferrer"
               data-testid="customer-service-link"
             >
               <Translate value={'pageLogin.customer_service'}/>
             </a>
-            <button onClick={toggleShowInfo} className={'text-blue-active text-xs mt-6'} data-testid="back-button">
+            <button
+              onClick={toggleShowInfo}
+              className={'text-blue hover:text-blue-hover active:text-blue-active text-xs mt-6'}
+              data-testid="back-button"
+            >
               <Translate value={'pageLogin.back'}/>
             </button>
           </div>

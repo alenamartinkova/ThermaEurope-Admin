@@ -85,7 +85,7 @@ export default function NewPassword (): JSX.Element {
 
         <button
           onClick={generatePassword}
-          className={'bg-blue-active text-white w-full py-3 rounded-10 text-base'}
+          className={'bg-blue hover:bg-blue-hover active:bg-blue-active text-white w-full py-3 rounded-10 text-base'}
           data-testid="generate-password-button"
         >
           <Translate value={'pageLogin.generate_password'} />

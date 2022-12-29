@@ -1,0 +1,13 @@
+.account-block {
+  box-shadow: 0 1px 3px 1px rgb(0 0 0 / 10%);
+
+  label {
+    display: block;
+  }
+
+  .account-select {
+    .item[data-state='checked'] {
+      background-color: theme('colors.cyan-light');
+    }
+  }
+}

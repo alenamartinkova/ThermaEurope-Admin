@@ -55,7 +55,7 @@ export function MenuItem (props: PropsWithChildren<{ onClick: () => void, testId
   return (
     <button
       onClick={props.onClick}
-      className={`main-menu-item ${(props.isActive ?? false) ? 'active' : ''} w-64 cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full`}
+      className={`main-menu-item ${(props.isActive ?? false) ? 'active' : ''} w-64 cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full active:bg-gray-light items-center`}
       data-testid={props.testId}
     >
       {props.children}
