@@ -1,8 +1,5 @@
 import React from 'react'
 import * as Select from '@radix-ui/react-select'
-import { usePage } from '@inertiajs/inertia-react'
-import { Page } from '@inertiajs/inertia'
-import { SharedProps } from '../../Interfaces/SharedProps'
 
 export default function AccountBlockSelect (props: { optionsForSelect: any[], value: string, setValue: React.Dispatch<React.SetStateAction<string>> }): JSX.Element {
   const { optionsForSelect, value, setValue } = props

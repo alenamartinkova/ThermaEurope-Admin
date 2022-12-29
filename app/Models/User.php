@@ -9,7 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 /**
- * @property int id
+ * @property int $id
  */
 class User extends Authenticatable
 {
