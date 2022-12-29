@@ -36,7 +36,7 @@ export default function Layout (props: PropsWithChildren<{}>): JSX.Element {
       <div className={'flex flex-col flex-nowrap justify-between items-stretch pt-15 sm:pt-17 h-screen'}>
         <article>{props.children}</article>
 
-        <div className={'w-full flex flex-col items-center justify-center pt-2.5 pb-3.5 px-7 sm:px-24'}>
+        <div className={'w-full text-xs font-medium text-grey-text flex flex-col items-center justify-center pt-2.5 pb-3.5 px-7 sm:px-24'}>
           <div className={'text-center'}><Translate value={'layout.footer.line_1'}/></div>
           <div className={'text-center'}><Translate value={'layout.footer.line_2'}/></div>
           <div className={'text-center'}><Translate value={'layout.footer.line_3'}/></div>

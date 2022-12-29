@@ -13,7 +13,7 @@ export default function Login (): JSX.Element {
       <div className={'w-full flex flex-row justify-center mt-5'}>
         <Link
           href={route('password.request')}
-          className={'text-blue hover:text-blue-hover active:text-blue-active text-xs'} data-testid="forgotten-password-link">
+          className={'text-blue font-medium hover:text-blue-hover active:text-blue-active text-xs'} data-testid="forgotten-password-link">
           <Translate value={'pageLogin.forgot_password'}/>
         </Link>
       </div>

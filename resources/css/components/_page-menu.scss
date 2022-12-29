@@ -1,14 +1,12 @@
-.page-menu {
+.page-menu-item {
   color: theme('colors.grey-text');
+
+  &:hover {
+    background-color: theme('colors.gray-hover');
+  }
 
   svg {
     fill: theme('colors.grey-text');
-  }
-}
-
-.page-menu-item {
-  &:hover {
-    background-color: theme('colors.gray-hover');
   }
 }
 

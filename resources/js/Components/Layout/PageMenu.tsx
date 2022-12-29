@@ -11,7 +11,7 @@ export default function PageMenu (props: PropsWithChildren<{ allowCollapse?: boo
   const { allowCollapse } = props
 
   return (
-    <div data-testid="page-menu">
+    <div className={'font-medium'} data-testid="page-menu">
       <CollapsedContext.Provider value={(allowCollapse ?? false) && isCollapsed}>
           {props.children}
       </CollapsedContext.Provider>
