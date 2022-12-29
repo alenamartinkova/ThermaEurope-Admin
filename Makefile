@@ -55,6 +55,9 @@ generate-migrations:
 	find ./tests/database/migrations -name "*.php" -type f -delete
 	php artisan migrate:generate --squash --default-index-names -n --path=tests/database/migrations
 
+clear:
+	php artisan optimize:clear
+
 # Run this commands outside thermaeurope_app-admin docker container
 
 cypress-run:

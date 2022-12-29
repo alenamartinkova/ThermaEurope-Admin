@@ -15,6 +15,11 @@
     outline: none;
   }
 
+  .item:active {
+    background-color: theme('colors.gray-light');
+    outline: none;
+  }
+
   .item-icon {
     fill: theme('colors.grey-text');
   }

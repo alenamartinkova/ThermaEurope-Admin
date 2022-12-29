@@ -4,4 +4,6 @@ export interface User extends PageProps {
   name: string
   email: string
   image: string
+  communication_lang: string
+  default_currency: string
 }

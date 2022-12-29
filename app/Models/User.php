@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
+/**
+ * @property int id
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRolesAndAbilities;
@@ -22,6 +25,8 @@ class User extends Authenticatable
         'email',
         'image',
         'password',
+        'communication_lang',
+        'currency',
     ];
 
     /**

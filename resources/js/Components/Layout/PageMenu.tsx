@@ -17,27 +17,27 @@ export default function PageMenu (props: PropsWithChildren<{ allowCollapse?: boo
       </CollapsedContext.Provider>
 
       {(allowCollapse ?? false) &&
-        <div
+        <button
           onClick={toggleIsCollapsed}
-          className={'w-10 h-10 ml-3.5 mt-6 flex justify-center items-center rounded-full bg-gray-hover cursor-pointer'}
+          className={'active:bg-gray-light cursor-pointer w-10 h-10 ml-3.5 mt-6 flex justify-center items-center rounded-full bg-gray-hover'}
           data-testid="page-menu-toggle-trigger"
         >
           <div className={'w-5 h-5'}>
             {isCollapsed ? <SwipeRight/> : <SwipeLeft/>}
           </div>
-        </div>
+        </button>
       }
     </div>
   )
 }
 
-export function MenuItem (props: PropsWithChildren<{ onClick: () => void, testId: string | null, isActive?: boolean }>): JSX.Element {
+export function MenuItem (props: PropsWithChildren<{ onClick: () => void, testId?: string | null, isActive?: boolean }>): JSX.Element {
   const isCollapsed = useContext(CollapsedContext)
 
   return (
     <button
       onClick={props.onClick}
-      className={`page-menu-item ${(props.isActive ?? false) ? 'active' : ''} ${isCollapsed ? 'w-14' : 'w-64'} cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full`}
+      className={`page-menu-item ${(props.isActive ?? false) ? 'active' : ''} ${isCollapsed ? 'w-14' : 'w-64'} cursor-pointer h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full active:bg-gray-light items-center`}
       data-testid={props.testId}
     >
       {props.children}
@@ -55,6 +55,18 @@ export function MenuItemLabel (props: PropsWithChildren<{}>): JSX.Element {
           { props.children }
         </div>
       }
+    </>
+  )
+}
+
+export function MenuItemHeading (props: PropsWithChildren<{}>): JSX.Element {
+  const isCollapsed = useContext(CollapsedContext)
+
+  return (
+    <>
+      <div className={`page-menu-item__heading ${isCollapsed ? 'w-14' : 'w-64'} active h-12 flex flex-row flex-nowrap min-w-max py-3.5 sm:py-4 px-4 sm:px-5 rounded-r-full text-2xl items-center`}>
+        { props.children }
+      </div>
     </>
   )
 }

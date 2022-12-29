@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\ForgottenPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -46,4 +47,14 @@ Route::middleware(['auth'])->group(function () {
 
     // Reservations
     Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation.index');
+
+    // Account - Preferences
+    Route::get('/preferences', [AccountController::class, 'preferences'])->name('account.preferences');
+    // Account - Personal information
+    Route::get('/personal-information', [AccountController::class, 'personalInformation'])->name('account.personal_information');
+    // Account - Security
+    Route::get('/security', [AccountController::class, 'security'])->name('account.security');
+
+    // Account - Post
+    Route::post('/update-account-language', [AccountController::class, 'updateAccountLanguage'])->name('account.update_account_language');
 });
