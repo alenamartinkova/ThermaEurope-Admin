@@ -12,7 +12,7 @@ import Translate from '../Components/Translate'
 import route from 'ziggy-js'
 
 export default function Preferences (): JSX.Element {
-  const { user, languages } = usePage<Page<SharedProps & { languages: Language[] }>>().props
+  const { user, languages, msg } = usePage<Page<SharedProps & { languages: Language[] } & { msg: object }>>().props
   const [value, setValue] = useState(user.communication_lang)
 
   function handleSaveLanguage (): void {
@@ -26,18 +26,24 @@ export default function Preferences (): JSX.Element {
       mainMenuActiveItem={null}
       hasHeading={true}
     >
-      <AccountBlock
-        title={<Translate value={'account_pages.language.title'} />}
-        showContent={<AccountShowContent value={user.communication_lang}/>}
-        showEdit={<AccountShowEdit
-          optionsForSelect={languages}
-          value={value}
-          label={<Translate value={'account_pages.language.label'} />}
-          text={<Translate value={'account_pages.language.text'} />}
-          setValue={setValue}
-        />}
-        onSave={handleSaveLanguage}
-      />
+      <>
+        {(msg) !== null &&
+          msg
+        }
+
+        <AccountBlock
+          title={<Translate value={'account_pages.language.title'} />}
+          showContent={<AccountShowContent value={user.communication_lang}/>}
+          showEdit={<AccountShowEdit
+            optionsForSelect={languages}
+            value={value}
+            label={<Translate value={'account_pages.language.label'} />}
+            text={<Translate value={'account_pages.language.text'} />}
+            setValue={setValue}
+          />}
+          onSave={handleSaveLanguage}
+        />
+      </>
     </PageLayout>
   )
 }

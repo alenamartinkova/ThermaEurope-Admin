@@ -36,7 +36,10 @@ class AccountController extends Controller
      */
     public function preferences(): Response
     {
-        return Inertia::render('Preferences', ['languages' => $this->languageService->getAllLanguages()]);
+        return Inertia::render('Preferences', [
+            'languages' => $this->languageService->getAllLanguages(),
+            'msg' => session('msg')
+        ]);
     }
 
     /**
@@ -67,6 +70,7 @@ class AccountController extends Controller
 
         $this->userService->updateMyCommunicationLanguage($data['communication_lang']);
 
-        return Redirect::back();
+        // Msg -> has to send translation key here? How this will work?
+        return Redirect::back()->with(['msg' => 'Test message']);
     }
 }
