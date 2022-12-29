@@ -26,14 +26,14 @@ export default function PageLayout (props: PropsWithChildren<{ title: JSX.Elemen
       <div className={'w-full flex flex-col flex-nowrap'}>
         <Collapsible.Root open={open} onOpenChange={setOpen} className={'w-full flex flex-col flex-nowrap items-center md:items-start block md:hidden'}>
           <Collapsible.Trigger
-            className={'flex flex-row flex-nowrap items-center mt-5'}
+            className={'flex flex-row flex-nowrap items-center mt-5 font-medium'}
             data-testid="page-title-menu-trigger"
           >
             <h1>
               {title}
             </h1>
             <div className={'ml-2.5'}>
-              <div className={'w-2.5 h-2.5'}>{open ? <ArrowDown/> : <ArrowUp/>}</div>
+              <div className={'w-2.5 h-2.5 flex'}>{open ? <ArrowDown/> : <ArrowUp/>}</div>
             </div>
           </Collapsible.Trigger>
 
