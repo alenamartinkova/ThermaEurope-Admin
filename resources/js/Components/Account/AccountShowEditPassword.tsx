@@ -8,11 +8,11 @@ import { SharedProps } from '../../Interfaces/SharedProps'
 interface PasswordValues {
   password: string
   password_changed: string
-  password_changed_confirm: string
+  password_changed_confirmation: string
 }
 
-export default function AccountShowEditPassword (props: { onChange: React.ChangeEventHandler<HTMLInputElement>, values: PasswordValues }): JSX.Element {
-  const { onChange, values } = props
+export default function AccountShowEditPassword (props: { onChange: React.ChangeEventHandler<HTMLInputElement>, values: PasswordValues, showPassword: boolean }): JSX.Element {
+  const { onChange, values, showPassword } = props
   const { errors } = usePage<Page<SharedProps>>().props
 
   return (
@@ -38,14 +38,14 @@ export default function AccountShowEditPassword (props: { onChange: React.Change
             <label className={'text-grey-text mb-1'}>
               <Translate value={'account_pages.security.password.new_password'} />
             </label>
-            <Input id={'password_changed'} type={'password'} value={values.password_changed} onChange={onChange} error={errors.password_changed} />
+            <Input id={'password_changed'} type={showPassword ? 'text' : 'password'} value={values.password_changed} onChange={onChange} error={errors.password_changed} />
           </div>
 
           <div>
             <label className={'text-grey-text mb-1'}>
               <Translate value={'account_pages.security.password.retype_password'} />
             </label>
-            <Input id={'password_changed_confirm'} type={'password'} value={values.password_changed_confirm} onChange={onChange} error={errors.password_changed_confirm} />
+            <Input id={'password_changed_confirmation'} type={showPassword ? 'text' : 'password'} value={values.password_changed_confirmation} onChange={onChange} error={errors.password_changed_confirm} />
           </div>
         </div>
       </div>

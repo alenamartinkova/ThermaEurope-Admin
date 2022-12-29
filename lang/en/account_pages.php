@@ -29,10 +29,12 @@ return [
             'current_password' => 'Current Password',
             'new_password' => 'New Password',
             'retype_password' => 'Retype Password',
+            'change_password' => 'Change password'
         ]
     ],
     'account' => 'Account',
     'edit' => 'Edit',
     'cancel' => 'Cancel',
     'save' => 'Save',
+    'change' => 'Change'
 ];

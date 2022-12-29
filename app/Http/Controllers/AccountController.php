@@ -10,7 +10,7 @@ use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
-use Redirect;
+use Illuminate\Support\Facades\Redirect;
 
 class AccountController extends Controller
 {
@@ -71,19 +71,22 @@ class AccountController extends Controller
 
         $this->userService->updateMyCommunicationLanguage($data['communication_lang']);
 
-        // TODO Msg -> has to send translation key here? How this will work?
+        // TODO Msg -> has to send translation key here? How this will work? How to differentiate error/success message
         return Redirect::back()->with(['msg' => 'Test message']);
     }
 
     /**
-     * @param  PasswordUpdateRequest  $request
+     * @param PasswordUpdateRequest $request
      * @return RedirectResponse
      *
      * @throws NotAuthenticatedException
      */
     public function updatePassword(PasswordUpdateRequest $request): RedirectResponse
     {
-        // TODO Msg -> has to send translation key here? How this will work?
-        return Redirect::back()->with(['msg' => 'Test message']);
+        $data = $request->getData();
+
+        $this->userService->updateMyPassword($data['password_changed']);
+        // TODO Msg -> has to send translation key here? How this will work? How to differentiate error/success message
+        return Redirect::back()->with(['msg' => 'Test ok current password message']);
     }
 }

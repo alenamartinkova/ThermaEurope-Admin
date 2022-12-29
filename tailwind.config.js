@@ -32,7 +32,6 @@ module.exports = {
         'cyan-light': '#E5F6F8',
         'cyan-active': '#B6E7EA',
         'error-red': '#EA0215',
-        'green-active': '#42B72B',
         'gray-light': '#dbdbdb',
         'gray-hover': '#f0f0f0',
         'grey-input': '#CDD0D4',
@@ -41,6 +40,9 @@ module.exports = {
         gray: {
           750: '#333'
         },
+        green: '#2EC700',
+        'green-hover': '#1EBC00',
+        'green-active': '#189500',
         input: '#757575'
       },
       fontFamily: {

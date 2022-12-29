@@ -28,7 +28,7 @@ class UserService
     }
 
     /**
-     * @param  string  $communicationLanguage
+     * @param  string $communicationLanguage
      * @return void
      *
      * @throws NotAuthenticatedException
@@ -40,7 +40,7 @@ class UserService
         ]);
 
         $user = Auth::user();
-        if (! $user) {
+        if (!$user) {
             Log::error('Error updating my communication language. No user authenticated.');
             throw new NotAuthenticatedException();
         }
@@ -57,6 +57,36 @@ class UserService
             Log::error('Error updating my communication language.', [
                 'user_id' => $user->getAuthIdentifier(),
                 'communication_lang' => $communicationLanguage,
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    /**
+     * @param  string $password
+     * @return void
+     *
+     * @throws NotAuthenticatedException
+     */
+    public function updateMyPassword(string $password): void
+    {
+        // TODO we should not log the password right? :D
+        Log::info('Updating my password.');
+
+        $user = Auth::user();
+        if (!$user) {
+            Log::error('Error updating my password. No user authenticated.');
+            throw new NotAuthenticatedException();
+        }
+
+        try {
+            $this->userRepository->update(['password' => bcrypt($password)], $user->getAuthIdentifier());
+            Log::info('My password updated.', [
+                'user_id' => $user->getAuthIdentifier()
+            ]);
+        } catch (Exception $e) {
+            Log::error('Error updating my password.', [
+                'user_id' => $user->getAuthIdentifier(),
                 'message' => $e->getMessage(),
             ]);
         }

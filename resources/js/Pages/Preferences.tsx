@@ -41,7 +41,10 @@ export default function Preferences (): JSX.Element {
             text={<Translate value={'account_pages.language.text'} />}
             setValue={setValue}
           />}
+          editTranslation={'account_pages.edit'}
+          saveTranslation={'account_pages.save'}
           onSave={handleSaveLanguage}
+          isPasswordBlock={false}
         />
       </>
     </PageLayout>
