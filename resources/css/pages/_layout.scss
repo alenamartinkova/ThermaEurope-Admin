@@ -12,6 +12,10 @@ header {
   box-shadow: 1px 1px 5px 0 rgb(0 0 0 / 15%);
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .input {
   @apply border-grey-border;
   @apply pl-5;

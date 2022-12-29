@@ -1,13 +1,16 @@
 @charset "utf-8";
 
-@use 'tailwindcss/base.css';
-@use 'tailwindcss/components.css';
-@use 'tailwindcss/utilities.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-@use 'components/select';
-@use 'components/language-menu';
-@use 'components/main-menu';
-@use 'components/page-menu';
-@use 'components/account-menu';
-@use 'components/login-form';
-@use 'pages/layout';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'components/select';
+@import 'components/language-menu';
+@import 'components/main-menu';
+@import 'components/page-menu';
+@import 'components/account-menu';
+@import 'components/login-form';
+@import 'pages/layout';
+
