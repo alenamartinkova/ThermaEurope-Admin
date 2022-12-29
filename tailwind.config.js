@@ -39,7 +39,7 @@ module.exports = {
         input: '#757575'
       },
       fontFamily: {
-        body: ['Montserrat', 'sans-serif']
+        body: ['"Montserrat"', 'sans-serif']
       }
     }
   },
