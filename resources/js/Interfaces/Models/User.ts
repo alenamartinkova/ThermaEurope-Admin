@@ -6,4 +6,5 @@ export interface User extends PageProps {
   image: string
   communication_lang: string
   default_currency: string
+  password_updated_at: string
 }

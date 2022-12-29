@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\NotAuthenticatedException;
 use App\Http\Requests\LanguageUpdateRequest;
+use App\Http\Requests\PasswordUpdateRequest;
 use App\Services\LanguageService;
 use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
@@ -70,7 +71,19 @@ class AccountController extends Controller
 
         $this->userService->updateMyCommunicationLanguage($data['communication_lang']);
 
-        // Msg -> has to send translation key here? How this will work?
+        // TODO Msg -> has to send translation key here? How this will work?
+        return Redirect::back()->with(['msg' => 'Test message']);
+    }
+
+    /**
+     * @param  PasswordUpdateRequest  $request
+     * @return RedirectResponse
+     *
+     * @throws NotAuthenticatedException
+     */
+    public function updatePassword(PasswordUpdateRequest $request): RedirectResponse
+    {
+        // TODO Msg -> has to send translation key here? How this will work?
         return Redirect::back()->with(['msg' => 'Test message']);
     }
 }

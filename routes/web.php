@@ -57,4 +57,5 @@ Route::middleware(['auth'])->group(function () {
 
     // Account - Post
     Route::post('/update-account-language', [AccountController::class, 'updateAccountLanguage'])->name('account.update_account_language');
+    Route::post('/update-password', [AccountController::class, 'updatePassword'])->name('account.update_password');
 });

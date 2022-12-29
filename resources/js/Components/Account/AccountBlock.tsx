@@ -49,7 +49,7 @@ export default function AccountBlock (props: {
         </>
       }
 
-      {/* FIND PLACE */}
+      {/* TODO FIND PLACE */}
       <ValidationError error={errors.communication_lang}/>
     </div>
   )

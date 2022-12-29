@@ -19,6 +19,17 @@ return [
     ],
     'security' => [
         'title' => 'Security',
+        'password' => [
+            'title' => 'Password',
+            'info_text' => 'Change your password regularly to keep your account secure.',
+            'info_date' => 'Last changed :date',
+            'edit_info_text_1' => 'Choose a strong password and don’t reuse it for other accounts.',
+            'edit_info_text_2' => 'Changing your password will sign you out of all your devices, including your phone. 
+                You will need to enter your new password on all your devices.',
+            'current_password' => 'Current Password',
+            'new_password' => 'New Password',
+            'retype_password' => 'Retype Password',
+        ]
     ],
     'account' => 'Account',
     'edit' => 'Edit',
