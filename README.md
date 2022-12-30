@@ -31,7 +31,7 @@
 - Run `make test` within `thermaeurope_app-admin` docker container.
 
 ## Cypress tests
-- This tests are available only outside the docker dontainer, so you need `npx` to run it.
+- These tests are available only outside the docker container, so you need `npx` to run it.
 - To run your tests successfully, you admin app must run on URL: `http://admin.thermaeurope.l/`
   - Don't forget to run Vite: `make vite`.
 - Run `make cypress-run` to run the tests in console and see results.

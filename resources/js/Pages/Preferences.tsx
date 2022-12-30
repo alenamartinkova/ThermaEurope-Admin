@@ -27,8 +27,11 @@ export default function Preferences (): JSX.Element {
       hasHeading={true}
     >
       <>
-        {(msg) !== null &&
-          msg
+        {msg !== undefined &&
+          /* TODO FOR NOW LIKE THIS FOR TEST - WILL ALTER LATER */
+          <div data-testid='communication_language_msg'>
+            { msg.toString() }
+          </div>
         }
 
         <AccountBlock
@@ -45,6 +48,7 @@ export default function Preferences (): JSX.Element {
           saveTranslation={'account_pages.save'}
           onSave={handleSaveLanguage}
           isPasswordBlock={false}
+          testId={'communication_language_block'}
         />
       </>
     </PageLayout>

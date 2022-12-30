@@ -52,7 +52,9 @@ export default function AccountMenu (): JSX.Element {
                   </div>
                 </DropdownMenu.Item>
 
-                <DropdownMenu.Item onSelect={() => handleLink('account.preferences')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
+                <DropdownMenu.Item onSelect={() => handleLink('account.preferences')}
+                                   className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}
+                                   data-testid="preferences">
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
                   </div>
@@ -61,7 +63,9 @@ export default function AccountMenu (): JSX.Element {
                   </div>
                 </DropdownMenu.Item>
 
-                <DropdownMenu.Item onSelect={() => handleLink('account.security')} className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}>
+                <DropdownMenu.Item onSelect={() => handleLink('account.security')}
+                                   className={'cursor-pointer item flex h-10 flex-row flex-nowrap items-center rounded p-2 gap-x-2.5'}
+                                   data-testid="security">
                   <div className={'item-icon w-5 h-5'}>
                     <HomeAccount/>
                   </div>

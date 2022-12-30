@@ -64,8 +64,11 @@ export default function Security (): JSX.Element {
       hasHeading={true}
     >
       <>
-        {(msg) !== null &&
-          msg
+        {msg !== undefined &&
+          /* TODO FOR NOW LIKE THIS FOR TEST - WILL ALTER LATER */
+          <div data-testid='security_password_msg'>
+            { msg.toString() }
+          </div>
         }
 
         <AccountBlock
@@ -77,6 +80,7 @@ export default function Security (): JSX.Element {
           editTranslation={'account_pages.change'}
           saveTranslation={'account_pages.security.password.change_password'}
           generatePassword={generatePassword}
+          testId={'security_password_block'}
         />
       </>
     </PageLayout>
