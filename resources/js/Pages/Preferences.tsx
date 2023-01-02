@@ -27,7 +27,7 @@ export default function Preferences (): JSX.Element {
       hasHeading={true}
     >
       <>
-        {msg !== undefined &&
+        {(msg !== undefined && msg !== null) &&
           /* TODO FOR NOW LIKE THIS FOR TEST - WILL ALTER LATER */
           <div data-testid='communication_language_msg'>
             { msg.toString() }

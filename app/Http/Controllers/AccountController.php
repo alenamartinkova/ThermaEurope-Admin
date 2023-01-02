@@ -56,7 +56,9 @@ class AccountController extends Controller
      */
     public function security(): Response
     {
-        return Inertia::render('Security');
+        return Inertia::render('Security', [
+            'msg' => session('msg')
+        ]);
     }
 
     /**

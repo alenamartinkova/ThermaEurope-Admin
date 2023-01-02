@@ -1,7 +1,4 @@
 describe('communication_language', () => {
-  const url = '/'
-  const getApp = () => cy.get('#app')
-
   before(() => {
     cy.fixture('login.json').then(login => {
       this.login = login
@@ -23,7 +20,7 @@ describe('communication_language', () => {
 
   it('test submit form', () => {
     cy.login(this.login.email, this.login.password)
-    cy.route('GET', '**/preferences').as('getPreferences');
+    cy.route('GET', '**/preferences').as('getPreferences')
 
     cy.get('[data-testid=account-menu]').find('.account-menu-trigger').click()
     cy.get('[data-testid=account-menu]').find('[data-testid=preferences]').click()

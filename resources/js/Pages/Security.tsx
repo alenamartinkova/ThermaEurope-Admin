@@ -64,7 +64,7 @@ export default function Security (): JSX.Element {
       hasHeading={true}
     >
       <>
-        {msg !== undefined &&
+        {(msg !== undefined && msg !== null) &&
           /* TODO FOR NOW LIKE THIS FOR TEST - WILL ALTER LATER */
           <div data-testid='security_password_msg'>
             { msg.toString() }
